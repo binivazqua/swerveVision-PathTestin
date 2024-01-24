@@ -177,15 +177,15 @@ public final class Constants {
     /**
      * PID constants for the autoalign
      */
-     public static final double kPdrive = 0.08;
+     public static final double kPdrive = 0.1;
      public static final double kIdrive = 0;
      public static final double kDdrive = 0;
 
-     public static final double kPstrafe = 0.04;
+     public static final double kPstrafe = 0.08;
      public static final double kIstrafe = 0;
      public static final double kDstrafe = 0;
 
-     public static final double kProtation = 0.01;
+     public static final double kProtation = 0.04;
      public static final double kIrotation = 0;
      public static final double kDrotation = 0;
 

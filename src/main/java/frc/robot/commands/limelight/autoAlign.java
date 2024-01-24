@@ -17,15 +17,15 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.limelightConstants;
 import frc.robot.Constants.limelightConstants.aprilTag;
 import frc.robot.subsystems.LimeLightObject;
+import frc.robot.subsystems.PhotonLL;
 import frc.robot.subsystems.swerveSusbsystem;
 
 public class autoAlign extends CommandBase {
 
    private final swerveSusbsystem swerve;
-    private final LimeLightObject limelight;
+    private final PhotonLL limelight;
     private final SlewRateLimiter xLimiter, yLimiter, giroLimiter;
     private final PIDController drivePID, strafePID, rotationPID;
-    private final boolean alingToAprilTag;
     private final double driveOffset, strafeOffset, rotationOffset;
     
 
@@ -36,10 +36,10 @@ public class autoAlign extends CommandBase {
      * @param limelight Instance for the limelight
      * @param alignToAprilTag It will be aligning to april tag or reflective tape
      */
-    public autoAlign(swerveSusbsystem swerveSubsystem, LimeLightObject limelight, boolean alingToAprilTag){
+    public autoAlign(){
 
-        this.swerve = swerveSubsystem;
-        this.limelight = limelight;
+        this.swerve = swerveSusbsystem.getInstance();
+        this.limelight = PhotonLL.getInstance();
 
         /**
          * Limiters for acceleration and a better moving of the robot
@@ -69,18 +69,19 @@ public class autoAlign extends CommandBase {
         /**
          * Boolean for what target to search
          */
-        this.alingToAprilTag = alingToAprilTag;
 
         /**
          * Offsets for the limelight
          */
         //this.offsets = limelight.getOffsets(alingToAprilTag);  
 
-        this.driveOffset = aprilTag.driveOffset;
-        this.strafeOffset = aprilTag.strafeOffset;
-        this.rotationOffset = aprilTag.rotationOffset;
+        this.driveOffset = 2.1;
+        this.strafeOffset = -0.2;
+        this.rotationOffset = 10.2;
 
-        addRequirements(swerveSubsystem);
+        addRequirements(swerve);
+        addRequirements(limelight);
+
         
      }
 
@@ -99,7 +100,6 @@ public class autoAlign extends CommandBase {
         
         
 
-        limelight.alingToAprilTag(alingToAprilTag);
         
         double velForward = 0;
         double velStrafe = 0;
@@ -109,12 +109,12 @@ public class autoAlign extends CommandBase {
          * If there is a seen target, calculate the PIDs velocities,
          * otherwise, rotate so the robot can search the target
          */
-        if(limelight.getObjectIsSeen()){
+        if(limelight.hasValueTargets()){
 
-            velForward = drivePID.calculate(limelight.getALimelight(), driveOffset);
-            velStrafe = strafePID.calculate(limelight.getXLimelight(), strafeOffset);
-            velGiro = rotationPID.calculate(limelight.getYaw(), rotationOffset); 
-        } else if(limelight.getObjectIsSeen() == false){
+            velForward = drivePID.calculate(limelight.getArea(), driveOffset);
+            velStrafe = strafePID.calculate(limelight.getXDistance(), strafeOffset);
+            velGiro = -rotationPID.calculate(limelight.getYaw(), rotationOffset); 
+        } else if(limelight.hasValueTargets() == false){
             velForward = 0;
             velStrafe = 0;
             velGiro = 0.4;  
