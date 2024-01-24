@@ -16,6 +16,8 @@ public class PhotonLL extends SubsystemBase {
 
   private double skew;
 
+  
+
 
       
     
@@ -38,10 +40,14 @@ public class PhotonLL extends SubsystemBase {
       pitch = target.getPitch();
       area = target.getArea();
       skew = target.getSkew();
+      var camToTarget = target.getBestCameraToTarget();
+
+      
 
       SmartDashboard.putNumber("Yaw", yaw);
-      SmartDashboard.putNumber("Pitch", yaw);
-      SmartDashboard.putNumber("Area", yaw);
+      SmartDashboard.putNumber("Pitch", pitch);
+      SmartDashboard.putNumber("Area", area);
+
 
     
     }

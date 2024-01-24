@@ -244,6 +244,11 @@ public class swerveSusbsystem extends SubsystemBase {
         SmartDashboard.putNumber("Relative Position 3", rearLeft.getTurnPosition());
         SmartDashboard.putNumber("Relative Position 4", rearRight.getTurnPosition());
 
+        SmartDashboard.putNumber("Drive Position 1", frontLeft.getDrivePosition());
+        SmartDashboard.putNumber("Drive Position 2", frontRight.getDrivePosition());
+        SmartDashboard.putNumber("Drive Position 3", rearLeft.getDrivePosition());
+        SmartDashboard.putNumber("Drive Position 4", rearRight.getDrivePosition());
+       
         SmartDashboard.putNumber("Giro Robot", getHeading());
 
         //Updating the odometry of the robot
