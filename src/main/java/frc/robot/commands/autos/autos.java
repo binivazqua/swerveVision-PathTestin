@@ -41,7 +41,7 @@ public class autos extends AutoUtils {
     }
 */
     public static Command test_papaya() {
-        return AutoBuilder.followPath(test);
+        return AutoBuilder.buildAuto("New Auto");
     }
 
 
