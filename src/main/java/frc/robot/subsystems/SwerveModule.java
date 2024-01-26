@@ -92,7 +92,7 @@ public class SwerveModule {
         absoluteEncoder = turnMotor.getAbsoluteEncoder(encodeerabstype);
         absoluteEncoder.setPositionConversionFactor(2 * Math.PI);
         absoluteEncoder.setInverted(constants.absoluteEncoderReversed);
-        absoluteEncoder.setZeroOffset(constants.absoluteEncoderOffsetRad);
+        //absoluteEncoder.setZeroOffset(constants.absoluteEncoderOffsetRad);
 
        /**
         * Set the periodic frame rate to 15 ms 

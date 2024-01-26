@@ -76,10 +76,10 @@ public final class Constants {
         * Create the kinematics of the swerve
         */
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-                new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(kWheelBase / 2, kTrackWidth / 2),
-                new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
-                new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+                new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
+                new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
+                new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
         public static final double kMaxDriveVEL = 6.5;
         public static final double kMaxRotVEL = 3 * 2 * Math.PI;
@@ -99,9 +99,9 @@ public final class Constants {
             public static int driveMotorID = 1;
             public static int turningMotorID = 2;
             public static boolean driveMotorInverted = true;
-            public static boolean turningMotorInverted = false;
-            public static double absoluteEncoderOffsetRad = 5.19;
-            public static boolean absoluteEncoderReversed = true;
+            public static boolean turningMotorInverted = true;
+            public static double absoluteEncoderOffsetRad = 0;
+            public static boolean absoluteEncoderReversed = false;
                        
             public static final SwerveModuleConstants constantes = 
             new SwerveModuleConstants(driveMotorID, turningMotorID, driveMotorInverted, 
@@ -114,9 +114,9 @@ public final class Constants {
             public static int driveMotorID = 3;
             public static int turningMotorID = 4;
             public static boolean driveMotorInverted = true;
-            public static boolean turningMotorInverted = false;
-            public static double absoluteEncoderOffsetRad = 5.67;
-            public static boolean absoluteEncoderReversed = true;
+            public static boolean turningMotorInverted = true;
+            public static double absoluteEncoderOffsetRad = 0;
+            public static boolean absoluteEncoderReversed = false;
                       
                   
             public static final SwerveModuleConstants constantes = 
@@ -131,10 +131,10 @@ public final class Constants {
             public static int driveMotorID = 5;
             public static int turningMotorID = 6;
             public static boolean driveMotorInverted = true;
-            public static boolean turningMotorInverted = false;
+            public static boolean turningMotorInverted = true;
             public static int absoluteEncoderID = 3;
-            public static double absoluteEncoderOffsetRad = 2.73;
-            public static boolean absoluteEncoderReversed = true;
+            public static double absoluteEncoderOffsetRad = 0;
+            public static boolean absoluteEncoderReversed = false;
                   
             public static final SwerveModuleConstants constantes = 
             new SwerveModuleConstants(driveMotorID, turningMotorID, driveMotorInverted, 
@@ -147,11 +147,11 @@ public final class Constants {
                   
             public static int driveMotorID = 7;
             public static int turningMotorID = 8;
-            public static boolean driveMotorInverted = false;
-            public static boolean turningMotorInverted = false;
+            public static boolean driveMotorInverted = true;
+            public static boolean turningMotorInverted = true;
             public static int absoluteEncoderID =  4;
-            public static double absoluteEncoderOffsetRad = 5.34;
-            public static boolean absoluteEncoderReversed = true; 
+            public static double absoluteEncoderOffsetRad = 0;
+            public static boolean absoluteEncoderReversed = false; 
                   
             public static final SwerveModuleConstants constantes = 
             new SwerveModuleConstants(driveMotorID, turningMotorID, driveMotorInverted, 

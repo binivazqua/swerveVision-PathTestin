@@ -77,7 +77,7 @@ public class swerveSusbsystem extends SubsystemBase {
 
     public swerveSusbsystem() {
 
-
+        
         AutoBuilder.configureHolonomic(
             this::getPose, 
             this::resetOdometry,
@@ -85,8 +85,8 @@ public class swerveSusbsystem extends SubsystemBase {
             this::setChassisSpeeds, 
 
             new HolonomicPathFollowerConfig(
-                new PIDConstants(.08, 0, 0),
-                new PIDConstants(0.08, 0, 0), 
+                new PIDConstants(17, 0, 0.01),
+                new PIDConstants(5, 0, 0), 
                 3.5, 
                 DriveConstants.DRIVE_BASE_RADIUS, 
                 new ReplanningConfig()), 
@@ -95,7 +95,7 @@ public class swerveSusbsystem extends SubsystemBase {
                     var alliance = DriverStation.getAlliance();
 
                     if (alliance.isPresent()) {
-                        return alliance.get() == DriverStation.Alliance.Red;
+                        return alliance.get() == DriverStation.Alliance.Blue;
                     }
                     return false;
                 }, 
@@ -148,7 +148,7 @@ public class swerveSusbsystem extends SubsystemBase {
     * @return the heading of the robot
     */
     public double getHeading() {
-        return Math.IEEEremainder(gyro.getAngle(), 360);
+        return Math.IEEEremainder(-gyro.getAngle(), 360);
     }
 
     /** Returns the module states (turn angles and drive velocities) for all of the modules. */
