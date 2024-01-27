@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.5,
-        "y": 5.5
+        "x": 0.8539869673657066,
+        "y": 4.2
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.4900232542829945,
-        "y": 5.5
+        "x": 0.8393012850479763,
+        "y": 4.185314317679031
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.5
+        "x": 2.748439987040977,
+        "y": 3.9210771802581177
       },
       "prevControl": {
-        "x": 2.1162466069147134,
-        "y": 5.5
+        "x": 1.8232420006879382,
+        "y": 3.6420492161198994
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.1328851779019,
+    "rotation": -178.21008939175397,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "miercoles-de-plaza",
+  "folder": null,
   "previewStartingState": null,
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

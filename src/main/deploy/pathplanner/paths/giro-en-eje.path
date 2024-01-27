@@ -3,73 +3,57 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.5
+        "x": 1.7864741252291994,
+        "y": 5.53650223579517
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.720442224426489,
-        "y": 5.448388141856785
+        "x": 1.8379276830110018,
+        "y": 5.53650223579517
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0,
-        "y": 5.5
+        "x": 1.7864741252291994,
+        "y": 5.53650223579517
       },
       "prevControl": {
-        "x": 2.6456402107795283,
-        "y": 5.595244965087426
+        "x": 1.7650754210337978,
+        "y": 5.515103531599767
       },
       "nextControl": {
-        "x": 3.2668229549264485,
-        "y": 5.42828322005045
+        "x": 1.7917042481819154,
+        "y": 5.541732358747886
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 1.7926403116740564,
+        "y": 5.539275927349898
       },
       "prevControl": {
-        "x": 3.2909041959091576,
-        "y": 4.316526779163231
+        "x": 1.7926403116740564,
+        "y": 5.535422606925778
       },
       "nextControl": {
-        "x": 2.792497034010169,
-        "y": 3.774220357027476
+        "x": 1.7926403116740564,
+        "y": 5.543129247774019
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.7057565421034249,
-        "y": 4.0
+        "x": 1.7864741252291994,
+        "y": 5.53650223579517
       },
       "prevControl": {
-        "x": 1.8191446503070634,
-        "y": 3.854986497603273
-      },
-      "nextControl": {
-        "x": 1.5148426719035912,
-        "y": 4.244162191365528
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.7057565421034249,
-        "y": 5.330902683272273
-      },
-      "prevControl": {
-        "x": 1.4854713072574635,
-        "y": 5.301531318626144
+        "x": 1.8029172890821517,
+        "y": 5.53650223579517
       },
       "nextControl": null,
       "isLocked": false,
@@ -78,18 +62,23 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.2,
-      "rotationDegrees": 91.29115952179001,
+      "waypointRelativePos": 0.6000000000000001,
+      "rotationDegrees": 45.0,
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 1.95,
-      "rotationDegrees": 179.1245493968538,
+      "waypointRelativePos": 1.25,
+      "rotationDegrees": 90.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 2.25,
+      "rotationDegrees": 135.0,
       "rotateFast": false
     },
     {
       "waypointRelativePos": 3.0,
-      "rotationDegrees": -91.01624215538577,
+      "rotationDegrees": 180.0,
       "rotateFast": false
     }
   ],
@@ -103,11 +92,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "miercoles-de-plaza",
+  "folder": null,
   "previewStartingState": null,
   "useDefaultConstraints": false
 }
