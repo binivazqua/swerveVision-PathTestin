@@ -148,7 +148,7 @@ public final class Constants {
             public static int driveMotorID = 7;
             public static int turningMotorID = 8;
             public static boolean driveMotorInverted = true;
-            public static boolean turningMotorInverted = true;
+            public static boolean turningMotorInverted = true;  
             public static int absoluteEncoderID =  4;
             public static double absoluteEncoderOffsetRad = 0;
             public static boolean absoluteEncoderReversed = false; 
