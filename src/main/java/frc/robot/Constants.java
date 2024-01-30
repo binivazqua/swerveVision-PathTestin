@@ -228,8 +228,9 @@ public final class Constants {
         public static final double kDeadband = 0.05;
     }
 
-    /* 
+    
     public static final class PS4OIConstants {
+        
         public static final int kDriverYAxis = 1;
         public static final int kDriverXAxis = 0;
 
@@ -238,7 +239,8 @@ public final class Constants {
 
         public static final double kDeadband = 0.05;
     }
-    */
+    
+
     public static final class Shuffleboard {
 
         public static final ShuffleboardTab kShuffleboardTab = edu.wpi.first.wpilibj.shuffleboard.Shuffleboard.getTab("Imperator");

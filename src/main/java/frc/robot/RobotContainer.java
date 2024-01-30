@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
+import frc.robot.Constants.PS4OIConstants;
 import frc.robot.commands.PhotonLLCommand;
 import frc.robot.commands.swerveDriveComando;
 import frc.robot.commands.autos.autos;
@@ -38,6 +39,7 @@ public class RobotContainer {
         limelight  = LimeLightObject.getInstance();
         photoncamera = PhotonLL.getInstance();
 
+        /* 
         swerveSubsystem.setDefaultCommand(new swerveDriveComando(
                 swerveSubsystem,
                 () -> -driverJoytick.getRawAxis(OIConstants.kDriverYAxis),
@@ -47,18 +49,37 @@ public class RobotContainer {
                 true
                 ));
 
+        /* +++++ NO ME FUNEN ++++
+        */
+        swerveSubsystem.setDefaultCommand(new swerveDriveComando(
+                    swerveSubsystem,
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverRotAxis),
+                    () -> driverJoytick.getRawButton(PS4OIConstants.kDriverFieldOrientedButtonIdx),
+                    true
+                    ));
+    
+
               //limelight.setDefaultCommand(new limelighCommand(swerveSubsystem, limelight, false));
               photoncamera.setDefaultCommand(new PhotonLLCommand());
                 
               
         configureButtonBindings();
+
+         
+         
     }
 
     
     private void configureButtonBindings() {
 
         //APRIL TAG:
-       new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());
+       //new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());
+
+       //PS4:
+       new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign());
+
 
        //REFLECTIVE TAPE:
         //new JoystickButton(driverJoytick, 4).whileTrue(new autoAlign(swerveSubsystem, limelight, false));

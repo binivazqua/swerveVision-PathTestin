@@ -26,6 +26,12 @@
                 "data": {
                   "pathName": "subwoofer-center-shoot"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "neitoCommand"
+                }
               }
             ]
           }
