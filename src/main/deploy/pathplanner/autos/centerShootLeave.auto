@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2,
-      "y": 5.5
+      "x": 1.3679858486729504,
+      "y": 5.830215882256452
     },
     "rotation": 180.0
   },
@@ -12,12 +12,6 @@
     "data": {
       "commands": [
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
           "type": "sequential",
           "data": {
             "commands": [
@@ -25,12 +19,6 @@
                 "type": "path",
                 "data": {
                   "pathName": "subwoofer-center-shoot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "neitoCommand"
                 }
               }
             ]

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class neitoCommand extends CommandBase {
+  
   public static CANSparkMax neito = new CANSparkMax(9, MotorType.kBrushless);
 
 

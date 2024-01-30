@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5001569895805271,
-        "y": 5.5
+        "x": 1.3679858486729504,
+        "y": 5.830215882256452
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.514842671903591,
-        "y": 5.5
+        "x": 1.3826715309960143,
+        "y": 5.830215882256452
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.3,
-        "y": 5.5
+        "x": 2.895296810271618,
+        "y": 5.830215882256452
       },
       "prevControl": {
-        "x": 2.3073428411615327,
-        "y": 5.5
+        "x": 2.887953969110085,
+        "y": 5.830215882256452
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "neitoCommand",
-      "waypointRelativePos": 1.0,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "sequential",
         "data": {

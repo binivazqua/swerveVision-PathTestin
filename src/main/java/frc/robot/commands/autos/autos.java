@@ -6,6 +6,7 @@
 package frc.robot.commands.autos;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.path.PathPlannerTrajectory;
 
@@ -18,6 +19,7 @@ public class autos extends AutoUtils {
 
     
     private static PathPlannerPath test = PathPlannerPath.fromPathFile("platanop1");
+    
     /*public static Command autoForward(){
         return Commands.sequence(TrajectoryReader.readTrajectory(goForward, true));
     }
@@ -41,7 +43,7 @@ public class autos extends AutoUtils {
     }
 */
     public static Command test_papaya() {
-        return AutoBuilder.buildAuto("New Auto");
+        return AutoBuilder.buildAuto("centerShootLeave");
     }
 
 
