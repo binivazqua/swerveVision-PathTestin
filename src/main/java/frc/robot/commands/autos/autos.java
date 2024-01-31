@@ -43,7 +43,7 @@ public class autos extends AutoUtils {
     }
 */
     public static Command test_papaya() {
-        return AutoBuilder.buildAuto("centerShootLeave");
+        return AutoBuilder.buildAuto("prueba1");
     }
 
 
