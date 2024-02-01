@@ -11,7 +11,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.lib.util.limelightOffsets;
+import frc.lib.util.alignConstants;
 import frc.robot.Constants.limelightConstants.aprilTag;
 import frc.robot.Constants.limelightConstants.reflectiveTape;
 
@@ -35,7 +35,7 @@ public class LimeLightObject extends SubsystemBase{
 
     private int pipelineNumber; //the number of the pipeline in use
 
-    private limelightOffsets offsets; //A limelightOffsets class
+    private alignConstants offsets; //A limelightOffsets class
 
 
 

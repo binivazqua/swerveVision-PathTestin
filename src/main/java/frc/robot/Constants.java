@@ -6,13 +6,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.lib.util.SwerveModuleConstants;
-import frc.lib.util.limelightOffsets;
+import frc.lib.util.alignConstants;
 
 public final class Constants {
 
@@ -177,37 +178,63 @@ public final class Constants {
     /**
      * PID constants for the autoalign
      */
-     public static final double kPdrive = 0.1;
-     public static final double kIdrive = 0;
-     public static final double kDdrive = 0;
-
-     public static final double kPstrafe = 0.08;
-     public static final double kIstrafe = 0;
-     public static final double kDstrafe = 0;
-
-     public static final double kProtation = 0.04;
-     public static final double kIrotation = 0;
-     public static final double kDrotation = 0;
+     
 
         public static final class aprilTag{
 
-            public static double driveOffset = 5.4;
-            public static double strafeOffset = -1;
-            public static double rotationOffset = 17;
+            public static final double kPdrive = 0.1;
+            public static final double kIdrive = 0;
+            public static final double kDdrive = 0;
 
-            public static final limelightOffsets offsets =  
-        new limelightOffsets(driveOffset, strafeOffset, rotationOffset);
+            public static final double kPstrafe = 0.08;
+            public static final double kIstrafe = 0;
+            public static final double kDstrafe = 0;
+
+            public static final double kProtation = 0.04;
+            public static final double kIrotation = 0;
+            public static final double kDrotation = 0;
+
+            public static double driveOffset = 2.1;
+            public static double strafeOffset = -0.2;
+            public static double rotationOffset = 10.2;
+            
+            public static PIDController drivePID = new PIDController(kPdrive, kIdrive, kDdrive);
+            public static PIDController strafePID = new PIDController(kPstrafe, kIstrafe, kDstrafe);
+            public static PIDController rotationPID = new PIDController(kProtation, kIrotation, kDrotation);
+
+
+
+            public static final alignConstants offsets =  
+        new alignConstants(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
 
-        public static final class reflectiveTape{
+        public static final class noteOffsets{
+
+            public static final double kPdrive = 0.1;
+            public static final double kIdrive = 0;
+            public static final double kDdrive = 0;
+
+            public static final double kPstrafe = 0.08;
+            public static final double kIstrafe = 0;
+            public static final double kDstrafe = 0;
+
+            public static final double kProtation = 0.04;
+            public static final double kIrotation = 0;
+            public static final double kDrotation = 0;
 
             public static double driveOffset = 0.08;
             public static double strafeOffset = -5.16;
             public static double rotationOffset = 17;
+            
+            public static PIDController drivePID = new PIDController(kPdrive, kIdrive, kDdrive);
+            public static PIDController strafePID = new PIDController(kPstrafe, kIstrafe, kDstrafe);
+            public static PIDController rotationPID = new PIDController(kProtation, kIrotation, kDrotation);
 
-            public static final limelightOffsets offsets =  
-        new limelightOffsets(driveOffset, strafeOffset, rotationOffset);
+            
+
+            public static final alignConstants offsets =  
+        new alignConstants(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
 

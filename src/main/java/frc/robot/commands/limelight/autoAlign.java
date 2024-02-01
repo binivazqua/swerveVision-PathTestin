@@ -11,7 +11,7 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.lib.util.limelightOffsets;
+import frc.lib.util.alignConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.limelightConstants;
@@ -27,6 +27,7 @@ public class autoAlign extends CommandBase {
     private final SlewRateLimiter xLimiter, yLimiter, giroLimiter;
     private final PIDController drivePID, strafePID, rotationPID;
     private final double driveOffset, strafeOffset, rotationOffset;
+    private final alignConstants offsets;
     
 
     /**
@@ -36,10 +37,11 @@ public class autoAlign extends CommandBase {
      * @param limelight Instance for the limelight
      * @param alignToAprilTag It will be aligning to april tag or reflective tape
      */
-    public autoAlign(){
+    public autoAlign(alignConstants objectConstants){
 
         this.swerve = swerveSusbsystem.getInstance();
         this.limelight = PhotonLL.getInstance();
+        this.offsets = objectConstants;
 
         /**
          * Limiters for acceleration and a better moving of the robot
@@ -52,20 +54,11 @@ public class autoAlign extends CommandBase {
         /**
          * PID Controllers for the align
          */
-        this.drivePID = new PIDController(
-            limelightConstants.kPdrive, 
-            limelightConstants.kIdrive, 
-            limelightConstants.kDdrive);
+        this.drivePID = objectConstants.drivePID;
 
-        this.strafePID = new PIDController(
-            limelightConstants.kPstrafe, 
-            limelightConstants.kIstrafe, 
-            limelightConstants.kDstrafe);
+        this.strafePID = objectConstants.strafePID;
 
-        this.rotationPID = new PIDController(
-            limelightConstants.kProtation, 
-            limelightConstants.kIrotation, 
-            limelightConstants.kDrotation);
+        this.rotationPID = objectConstants.rotationPID;
         /**
          * Boolean for what target to search
          */
@@ -75,9 +68,11 @@ public class autoAlign extends CommandBase {
          */
         //this.offsets = limelight.getOffsets(alingToAprilTag);  
 
-        this.driveOffset = 2.1;
-        this.strafeOffset = -0.2;
-        this.rotationOffset = 10.2;
+        this.driveOffset = objectConstants.driveOffset;
+        this.strafeOffset = objectConstants.strafeOffset;
+        this.rotationOffset = objectConstants.rotationOffset;
+
+
 
         addRequirements(swerve);
         addRequirements(limelight);
