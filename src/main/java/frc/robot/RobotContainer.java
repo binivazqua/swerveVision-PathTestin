@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
+import frc.robot.Constants.limelightConstants;
 import frc.robot.commands.PhotonLLCommand;
 import frc.robot.commands.neitoCommand;
 import frc.robot.commands.swerveDriveComando;
@@ -83,7 +84,7 @@ public class RobotContainer {
        //new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());
 
        //PS4:
-       new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign());
+       new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign(limelightConstants.aprilTag.offsets));
 
        new JoystickButton(driverJoytick, 1).whileTrue(new neitoCommand());
 
