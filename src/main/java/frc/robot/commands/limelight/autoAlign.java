@@ -7,11 +7,12 @@
 package frc.robot.commands.limelight;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.lib.util.alignConstants;
+import frc.lib.util.alignConstraints;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.limelightConstants;
@@ -25,9 +26,9 @@ public class autoAlign extends CommandBase {
    private final swerveSusbsystem swerve;
     private final PhotonLL limelight;
     private final SlewRateLimiter xLimiter, yLimiter, giroLimiter;
-    private final PIDController drivePID, strafePID, rotationPID;
+    private final ProfiledPIDController drivePID, strafePID, rotationPID;
     private final double driveOffset, strafeOffset, rotationOffset;
-    private final alignConstants offsets;
+    private final alignConstraints offsets;
     
 
     /**
@@ -37,7 +38,7 @@ public class autoAlign extends CommandBase {
      * @param limelight Instance for the limelight
      * @param alignToAprilTag It will be aligning to april tag or reflective tape
      */
-    public autoAlign(alignConstants objectConstants){
+    public autoAlign(alignConstraints objectConstants){
 
         this.swerve = swerveSusbsystem.getInstance();
         this.limelight = PhotonLL.getInstance();
