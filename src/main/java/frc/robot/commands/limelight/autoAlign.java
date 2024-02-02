@@ -55,9 +55,7 @@ public class autoAlign extends CommandBase {
          * PID Controllers for the align
          */
         this.drivePID = objectConstants.drivePID;
-
         this.strafePID = objectConstants.strafePID;
-
         this.rotationPID = objectConstants.rotationPID;
         /**
          * Boolean for what target to search
