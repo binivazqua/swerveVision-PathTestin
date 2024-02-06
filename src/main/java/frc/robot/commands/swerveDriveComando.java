@@ -92,6 +92,7 @@ public class swerveDriveComando extends CommandBase {
         rotationVel = Math.abs(rotationVel) > OIConstants.kDeadband ? rotationVel : 0.0;
 
          // 3. Make the driving smoother
+         // CHANGE VELOCITY @RAMOS//
         driveVel = xLimiter.calculate(driveVel) * 3;
         strafeVel = yLimiter.calculate(strafeVel) * 3;
         rotationVel = giroLimiter.calculate(rotationVel)

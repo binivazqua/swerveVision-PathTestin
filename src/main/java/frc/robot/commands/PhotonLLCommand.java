@@ -1,6 +1,6 @@
 package frc.robot.commands;
 
-import frc.lib.util.alignConstants;
+import frc.lib.util.alignConstraints;
 import frc.robot.subsystems.PhotonLL;
 
 import org.photonvision.PhotonCamera;

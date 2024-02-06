@@ -7,13 +7,14 @@
 package frc.robot;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.lib.util.SwerveModuleConstants;
-import frc.lib.util.alignConstants;
+import frc.lib.util.alignConstraints;
 
 public final class Constants {
 
@@ -194,18 +195,29 @@ public final class Constants {
             public static final double kIrotation = 0;
             public static final double kDrotation = 0;
 
-            public static double driveOffset = 2.1;
+            public static final TrapezoidProfile.Constraints driveConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
+            
+            public static final TrapezoidProfile.Constraints strafeConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
+            
+            public static final TrapezoidProfile.Constraints rotationConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+            
+            public static double driveOffset = 1;
             public static double strafeOffset = -0.2;
             public static double rotationOffset = 10.2;
             
-            public static PIDController drivePID = new PIDController(kPdrive, kIdrive, kDdrive);
-            public static PIDController strafePID = new PIDController(kPstrafe, kIstrafe, kDstrafe);
-            public static PIDController rotationPID = new PIDController(kProtation, kIrotation, kDrotation);
+            public static ProfiledPIDController drivePID = new ProfiledPIDController(kPdrive, kIdrive, kDdrive, driveConstraints);
+            public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
+            public static ProfiledPIDController rotationPID = new ProfiledPIDController(kProtation, kIrotation, kDrotation, rotationConstraints);
 
 
 
-            public static final alignConstants offsets =  
-        new alignConstants(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
+            public static final alignConstraints offsets =  
+        new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
 
@@ -223,18 +235,29 @@ public final class Constants {
             public static final double kIrotation = 0;
             public static final double kDrotation = 0;
 
+            public static final TrapezoidProfile.Constraints driveConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
+            
+            public static final TrapezoidProfile.Constraints strafeConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
+            
+            public static final TrapezoidProfile.Constraints rotationConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
             public static double driveOffset = 0.08;
             public static double strafeOffset = -5.16;
             public static double rotationOffset = 17;
             
-            public static PIDController drivePID = new PIDController(kPdrive, kIdrive, kDdrive);
-            public static PIDController strafePID = new PIDController(kPstrafe, kIstrafe, kDstrafe);
-            public static PIDController rotationPID = new PIDController(kProtation, kIrotation, kDrotation);
+            public static ProfiledPIDController drivePID = new ProfiledPIDController(kPdrive, kIdrive, kDdrive, driveConstraints);
+            public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
+            public static ProfiledPIDController rotationPID = new ProfiledPIDController(kProtation, kIrotation, kDrotation, rotationConstraints);
 
             
 
-            public static final alignConstants offsets =  
-        new alignConstants(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
+            public static final alignConstraints offsets =  
+        new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
 

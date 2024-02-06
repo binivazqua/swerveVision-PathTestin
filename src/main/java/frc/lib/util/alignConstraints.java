@@ -7,24 +7,24 @@
  package frc.lib.util;
 import com.pathplanner.lib.util.PIDConstants;
 
-import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 
 
- public class alignConstants {
+ public class alignConstraints {
      
      public double driveOffset;
      public double strafeOffset;
      public double rotationOffset;
-     public PIDController drivePID, strafePID, rotationPID;
+     public ProfiledPIDController drivePID, strafePID, rotationPID;
 
  
-     public alignConstants(
+     public alignConstraints(
         double driveValue,
         double strafeValue,
         double rotationOffset,
-        PIDController drivePID,
-        PIDController strafePID,
-        PIDController rotationPID     
+        ProfiledPIDController drivePID,
+        ProfiledPIDController strafePID,
+        ProfiledPIDController rotationPID     
      ){
          this.driveOffset = driveValue;
          this.strafeOffset = strafeValue;
