@@ -10,9 +10,15 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.swerveSusbsystem;
 
 /**
@@ -26,6 +32,16 @@ import frc.robot.subsystems.swerveSusbsystem;
  */
 public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
+
+   
+
+    CANSparkMax motorIzqPivoteo = new CANSparkMax(9, MotorType.kBrushless);
+
+    CANSparkMax motorDerPivoteo = new CANSparkMax(10, MotorType.kBrushless);
+
+    Joystick placerJoystick = RobotContainer.placerJoystick;
+
+
 
     private RobotContainer m_robotContainer;
     swerveSusbsystem swerve;
@@ -43,6 +59,10 @@ public class Robot extends TimedRobot {
         m_robotContainer = new RobotContainer();
         swerve = swerveSusbsystem.getInstance();
         swerve.resetEncoders();
+
+        motorDerPivoteo.restoreFactoryDefaults();
+        motorIzqPivoteo.restoreFactoryDefaults();
+        
     }
 
     /**
@@ -66,7 +86,9 @@ public class Robot extends TimedRobot {
         // robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
+
     }
+
 
     /** This function is called once each time the robot enters Disabled mode. */
     @Override
@@ -110,6 +132,45 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during operator control. */
     @Override
     public void teleopPeriodic() {
+
+        if (placerJoystick.getRawButton(4)){
+            //intakea
+            Intake.setMotors(-0.3);
+        } else if (placerJoystick.getRawButton(3)){
+            //des-intakea
+            Intake.setMotors(0.3);
+
+        } else {
+            Intake.setMotors(0);
+
+        }
+        
+        if (placerJoystick.getRawButton(5)){
+            // dispara
+            Shooter.setMotors(-0.7);
+            // subir
+
+        }  else if (placerJoystick.getRawButton(6)){
+            //escupir
+            Shooter.setMotors(0.7);
+        } else {
+            Shooter.setMotors(0);
+
+        }
+
+        if (placerJoystick.getRawButton(1)) {
+            motorIzqPivoteo.set(0.17);
+            motorDerPivoteo.set(-0.17);
+        } else if (placerJoystick.getRawButton(2)){ 
+            motorIzqPivoteo.set(0.05);
+            motorDerPivoteo.set(-0.05);
+        } else if (placerJoystick.getRawButton(9)){ 
+            motorIzqPivoteo.set(-0.1);
+            motorDerPivoteo.set(0.1);
+        } else {
+            motorIzqPivoteo.set(0);
+            motorDerPivoteo.set(0);
+        }
     }
 
     @Override

@@ -11,16 +11,18 @@ import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //import frc.lib.util.alignConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
 import frc.robot.Constants.limelightConstants;
 import frc.robot.commands.PhotonLLCommand;
-import frc.robot.commands.neitoCommand;
 import frc.robot.commands.swerveDriveComando;
 import frc.robot.commands.autos.autos;
 import frc.robot.commands.limelight.autoAlign;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LimeLightObject;
 import frc.robot.subsystems.PhotonLL;
 import frc.robot.subsystems.swerveSusbsystem;
@@ -44,7 +46,6 @@ public class RobotContainer {
         limelight  = LimeLightObject.getInstance();
         photoncamera = PhotonLL.getInstance();
         // "save" a command in order to call it within an event marker.
-        NamedCommands.registerCommand("neitoCommand", new neitoCommand());
 
         /* 
         swerveSubsystem.setDefaultCommand(new swerveDriveComando(
@@ -89,7 +90,10 @@ public class RobotContainer {
        //new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(limelightConstants.aprilTag.offsets));
 
 
+       
 
+
+        
        //REFLECTIVE TAPE:
         //new JoystickButton(driverJoytick, 4).whileTrue(new autoAlign(swerveSubsystem, limelight, false));
 
