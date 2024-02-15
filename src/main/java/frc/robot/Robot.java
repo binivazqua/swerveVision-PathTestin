@@ -133,31 +133,67 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
 
-        if (placerJoystick.getRawButton(4)){
+        /* 
+
+        if (placerJoystick.getRawButton(5)){
             //intakea
-            Intake.setMotors(-0.3);
-        } else if (placerJoystick.getRawButton(3)){
+            Intake.setMotors(-0.4);
+        } else if (placerJoystick.getRawButton(4)){
             //des-intakea
-            Intake.setMotors(0.3);
+            Intake.setMotors(0.4);
 
         } else {
-            Intake.setMotors(0);
+            //Intake.setMotors(0);
+            if (placerJoystick.getPOV() == 90) {
+                Shooter.setMotors(0.235);
+                Intake.setMotors(0.35);
+    
+            } else {
+                Shooter.setMotors(0);
+                Intake.setMotors(0);
+            }
 
         }
+        */
+        if (placerJoystick.getPOV() == 90) {
+            Shooter.setMotors(-0.2);
+            Intake.setMotors(-0.35);
+
+        } else if (placerJoystick.getRawButton(4)){
+            Intake.setMotors(0.4);
+
+        } else if (placerJoystick.getRawButton(5)){
+            Intake.setMotors(-0.4);
+
+        }else {
+            Shooter.setMotors(0);
+            Intake.setMotors(0);
+        }
+
+        /* 
         
-        if (placerJoystick.getRawButton(5)){
+        if (placerJoystick.getRawButton(6)){
             // dispara
             Shooter.setMotors(-0.7);
             // subir
 
-        }  else if (placerJoystick.getRawButton(6)){
+        }  else if (placerJoystick.getRawButton(10)){
             //escupir
             Shooter.setMotors(0.7);
         } else {
-            Shooter.setMotors(0);
-
+            //Shooter.setMotors(0);
+            if (placerJoystick.getPOV() == 90) {
+                Shooter.setMotors(0.235);
+                Intake.setMotors(0.35);
+    
+            } else {
+                Shooter.setMotors(0);
+                Intake.setMotors(0);
+            }
         }
 
+        
+*/
         if (placerJoystick.getRawButton(1)) {
             motorIzqPivoteo.set(0.17);
             motorDerPivoteo.set(-0.17);
@@ -171,6 +207,8 @@ public class Robot extends TimedRobot {
             motorIzqPivoteo.set(0);
             motorDerPivoteo.set(0);
         }
+
+        
     }
 
     @Override
