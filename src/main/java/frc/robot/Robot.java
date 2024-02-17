@@ -35,9 +35,9 @@ public class Robot extends TimedRobot {
 
    
 
-    CANSparkMax motorIzqPivoteo = new CANSparkMax(9, MotorType.kBrushless);
+   // CANSparkMax motorIzqPivoteo = new CANSparkMax(10, MotorType.kBrushless);
 
-    CANSparkMax motorDerPivoteo = new CANSparkMax(10, MotorType.kBrushless);
+    //CANSparkMax motorDerPivoteo = new CANSparkMax(9, MotorType.kBrushless);
 
     Joystick placerJoystick = RobotContainer.placerJoystick;
 
@@ -60,8 +60,7 @@ public class Robot extends TimedRobot {
         swerve = swerveSusbsystem.getInstance();
         swerve.resetEncoders();
 
-        motorDerPivoteo.restoreFactoryDefaults();
-        motorIzqPivoteo.restoreFactoryDefaults();
+
         
     }
 
@@ -133,7 +132,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
 
-        /* 
+        
 
         if (placerJoystick.getRawButton(5)){
             //intakea
@@ -143,7 +142,8 @@ public class Robot extends TimedRobot {
             Intake.setMotors(0.4);
 
         } else {
-            //Intake.setMotors(0);
+            Intake.setMotors(0);
+            /* 
             if (placerJoystick.getPOV() == 90) {
                 Shooter.setMotors(0.235);
                 Intake.setMotors(0.35);
@@ -152,9 +152,12 @@ public class Robot extends TimedRobot {
                 Shooter.setMotors(0);
                 Intake.setMotors(0);
             }
+            */
 
+        
         }
-        */
+        
+        /* 
         if (placerJoystick.getPOV() == 90) {
             Shooter.setMotors(-0.2);
             Intake.setMotors(-0.35);
@@ -169,19 +172,21 @@ public class Robot extends TimedRobot {
             Shooter.setMotors(0);
             Intake.setMotors(0);
         }
-
-        /* 
+        */
         
-        if (placerJoystick.getRawButton(6)){
+         
+        if (placerJoystick.getRawButton(10)){ // joystick izq
             // dispara
             Shooter.setMotors(-0.7);
-            // subir
+            
 
-        }  else if (placerJoystick.getRawButton(10)){
+        }  else if (placerJoystick.getRawButton(9)){ // joystick der
             //escupir
             Shooter.setMotors(0.7);
         } else {
-            //Shooter.setMotors(0);
+            Shooter.setMotors(0);
+        }
+            /* 
             if (placerJoystick.getPOV() == 90) {
                 Shooter.setMotors(0.235);
                 Intake.setMotors(0.35);
@@ -190,14 +195,15 @@ public class Robot extends TimedRobot {
                 Shooter.setMotors(0);
                 Intake.setMotors(0);
             }
-        }
+             */
+        
 
         
-*/
+/* 
         if (placerJoystick.getRawButton(1)) {
             motorIzqPivoteo.set(0.17);
             motorDerPivoteo.set(-0.17);
-        } else if (placerJoystick.getRawButton(2)){ 
+        } else if (placerJoystick.getRawButton(2)){ // invertido CAMBIAR
             motorIzqPivoteo.set(0.05);
             motorDerPivoteo.set(-0.05);
         } else if (placerJoystick.getRawButton(9)){ 
@@ -208,7 +214,7 @@ public class Robot extends TimedRobot {
             motorDerPivoteo.set(0);
         }
 
-        
+        */
     }
 
     @Override

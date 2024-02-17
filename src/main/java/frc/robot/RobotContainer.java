@@ -17,7 +17,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
 import frc.robot.Constants.limelightConstants;
+import frc.robot.commands.ArmVelocityCommand;
 import frc.robot.commands.PhotonLLCommand;
+import frc.robot.commands.PivoteoCommand;
 import frc.robot.commands.swerveDriveComando;
 import frc.robot.commands.autos.autos;
 import frc.robot.commands.limelight.autoAlign;
@@ -26,6 +28,7 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LimeLightObject;
 import frc.robot.subsystems.PhotonLL;
 import frc.robot.subsystems.swerveSusbsystem;
+import frc.robot.subsystems.Mecanismos.Pivoteo;
 
 public class RobotContainer {
 
@@ -33,6 +36,7 @@ public class RobotContainer {
     private swerveSusbsystem swerveSubsystem;
     private LimeLightObject limelight;
     private PhotonLL photoncamera;
+    private Pivoteo arm;
 
     public static Joystick driverJoytick = new Joystick(OIConstants.kDriverControllerPort);
     public static Joystick placerJoystick = new Joystick(OIConstants.kPlacerControllerPort);
@@ -45,6 +49,8 @@ public class RobotContainer {
         swerveSubsystem = swerveSusbsystem.getInstance();
         limelight  = LimeLightObject.getInstance();
         photoncamera = PhotonLL.getInstance();
+        arm = Pivoteo.getInstance();
+
         // "save" a command in order to call it within an event marker.
 
         /* 
@@ -71,6 +77,10 @@ public class RobotContainer {
 
               //limelight.setDefaultCommand(new limelighCommand(swerveSubsystem, limelight, false));
               photoncamera.setDefaultCommand(new PhotonLLCommand());
+
+              //pivoteo deffault command:
+              arm.setDefaultCommand(new ArmVelocityCommand(0));
+
                 
               
         configureButtonBindings();
@@ -90,7 +100,25 @@ public class RobotContainer {
        //new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(limelightConstants.aprilTag.offsets));
 
 
-       
+       //PID PIVOTEO PRUEBA:
+       //new JoystickButton(placerJoystick, 3).whileTrue(new PivoteoCommand(0.2)); // x
+       //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.25)); // a
+       //new JoystickButton(placerJoystick, 2).whileTrue(new PivoteoCommand(0.05)); // b
+
+       // SHOOTING POSITIONS:
+       // --> SUBWOOFER <----
+       new JoystickButton(placerJoystick, 3).whileTrue(new PivoteoCommand(0.061)); // 35°
+
+       // --> ROBOT STARTING ZONE <---
+       new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
+
+
+       // --> 50° <---
+       new JoystickButton(placerJoystick,2).whileTrue(new PivoteoCommand(0.122)); // 44°
+
+
+
+
 
 
         
@@ -102,7 +130,8 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // 1. Create trajectory settings
        //return autos.autoForward();
-       return autos.test_papaya();
+       //return autos.test_papaya();
+       return null;
 
         // 5. Add some init and wrap-up, and return everything
     }
