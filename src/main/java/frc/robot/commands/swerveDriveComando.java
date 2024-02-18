@@ -93,10 +93,10 @@ public class swerveDriveComando extends CommandBase {
 
          // 3. Make the driving smoother
          // CHANGE VELOCITY @RAMOS//
-        driveVel = xLimiter.calculate(driveVel) * 3;
-        strafeVel = yLimiter.calculate(strafeVel) * 3;
+        driveVel = xLimiter.calculate(driveVel) * 5;
+        strafeVel = yLimiter.calculate(strafeVel) * 5;
         rotationVel = giroLimiter.calculate(rotationVel)
-                * 4;
+                * 6;
 
         // 4. Construct desired chassis speeds
         ChassisSpeeds chassisSpeeds;
