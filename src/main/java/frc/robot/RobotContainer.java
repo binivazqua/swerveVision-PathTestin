@@ -7,38 +7,30 @@
 package frc.robot;
 
 
-import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.auto.AutoBuilder;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-//import frc.lib.util.alignConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
-import frc.robot.Constants.limelightConstants;
-import frc.robot.commands.ArmVelocityCommand;
-import frc.robot.commands.PhotonLLCommand;
-import frc.robot.commands.PivoteoCommand;
-import frc.robot.commands.swerveDriveComando;
+import frc.robot.commands.Mecanismos.ArmVelocityCommand;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
+import frc.robot.commands.Mecanismos.PhotonLLCommand;
+import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.ShooterButtonCmd;
-import frc.robot.commands.autos.autos;
-import frc.robot.commands.limelight.autoAlign;
-import frc.robot.subsystems.LimeLightObject;
-import frc.robot.subsystems.PhotonLL;
-import frc.robot.subsystems.swerveSusbsystem;
+import frc.robot.commands.hybrid.subroutines;
+import frc.robot.commands.swerve.swerveDriveComando;
 import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
 import frc.robot.subsystems.Mecanismos.ShooterSubsystem;
+import frc.robot.subsystems.swerve.swerveSusbsystem;
+import frc.robot.subsystems.vision.PhotonLL;
 
 public class RobotContainer {
 
-    //private final subsistemaSwerve swerveSubsystem = new subsistemaSwerve();
     private swerveSusbsystem swerveSubsystem;
-    private LimeLightObject limelight;
     private PhotonLL photoncamera;
     private Pivoteo arm;
     private final IntakeSubsystem m_intakeSubsystem;
@@ -48,13 +40,10 @@ public class RobotContainer {
     public static Joystick driverJoytick = new Joystick(OIConstants.kDriverControllerPort);
     public static Joystick placerJoystick = new Joystick(OIConstants.kPlacerControllerPort);
     
-    
-  
-
     public RobotContainer(){
 
+        
         swerveSubsystem = swerveSusbsystem.getInstance();
-        limelight  = LimeLightObject.getInstance();
         photoncamera = PhotonLL.getInstance();
         arm = Pivoteo.getInstance();
         m_intakeSubsystem = IntakeSubsystem.getInstance();
@@ -72,7 +61,6 @@ public class RobotContainer {
                 true
                 ));
 
-        /* +++++ NO ME FUNEN ++++
         */
         swerveSubsystem.setDefaultCommand(new swerveDriveComando(
                     swerveSubsystem,
@@ -82,9 +70,7 @@ public class RobotContainer {
                     () -> driverJoytick.getRawButton(PS4OIConstants.kDriverFieldOrientedButtonIdx),
                     true
                     ));
-    
 
-              //limelight.setDefaultCommand(new limelighCommand(swerveSubsystem, limelight, false));
               photoncamera.setDefaultCommand(new PhotonLLCommand());
 
               //pivoteo deffault command:
@@ -110,14 +96,7 @@ public class RobotContainer {
          
     }
 
-    public static Command shooter_intake_conDelay() {
-        return new SequentialCommandGroup(
-            new ShooterButtonCmd(0.75).withTimeout(1.7),
-            new ParallelCommandGroup(
-                new ShooterButtonCmd(0.75),
-                new IntakeButtonCmd(-0.5)).withTimeout(2));
-    
-  }
+   
 
     
     private void configureButtonBindings() {
@@ -158,7 +137,7 @@ public class RobotContainer {
 
         // COMMENTED OTHER COMMANDS:
         new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
-        new JoystickButton(placerJoystick, 6).whileTrue(shooter_intake_conDelay());
+        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
         new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5));
 
@@ -166,18 +145,12 @@ public class RobotContainer {
 
 
         
-       //REFLECTIVE TAPE:
-        //new JoystickButton(driverJoytick, 4).whileTrue(new autoAlign(swerveSubsystem, limelight, false));
-
     }
 
     public Command getAutonomousCommand() {
-        // 1. Create trajectory settings
-       //return autos.autoForward();
-       //return autos.test_papaya();
+       
        return null;
 
-        // 5. Add some init and wrap-up, and return everything
     }
 
 

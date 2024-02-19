@@ -3,22 +3,15 @@
  * 
  * {@MÆTH}
  */
-package frc.robot.commands.autos;
+package frc.robot.commands.hybrid;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.path.PathPlannerPath;
-import com.pathplanner.lib.path.PathPlannerTrajectory;
-
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import frc.robot.commands.limelight.autoAlign;
-import frc.utils.AutoUtils;
 
-public class autos extends AutoUtils {
+public class autos {
 
     
-    private static PathPlannerPath test = PathPlannerPath.fromPathFile("platanop1");
+   // private static PathPlannerPath test = PathPlannerPath.fromPathFile("platanop1");
     
     /*public static Command autoForward(){
         return Commands.sequence(TrajectoryReader.readTrajectory(goForward, true));

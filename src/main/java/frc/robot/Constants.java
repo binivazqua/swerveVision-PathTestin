@@ -6,6 +6,8 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax.IdleMode;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -254,7 +256,6 @@ public final class Constants {
             public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
             public static ProfiledPIDController rotationPID = new ProfiledPIDController(kProtation, kIrotation, kDrotation, rotationConstraints);
 
-            
 
             public static final alignConstraints offsets =  
         new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
@@ -262,6 +263,48 @@ public final class Constants {
         }
 
         
+    }
+
+    public static final class PivotingConstants {
+
+        public static final int kLeftMotorID = 10;
+        public static final int kRightMotorID = 9;
+
+        public static final int kMotorsCurrentLimit = 35;
+
+        public static final boolean kLeftMotorInverted = true;
+        public static final boolean kRightMotorInverted = false;
+
+        public static final double kP = 1.35;
+        public static final double kI = 0;
+        public static final double kD = 0;
+
+        public static final double kMaxVelocity = 22;
+        public static final double kMaxAcceleration = 22;
+
+        public static final double kPIDminInput = 0;
+        public static final double kPIDMaxInput = 0.995;
+
+    }
+
+    public static final class IntakeConstants {
+    
+        public static final int kMotorID = 11; 
+        public static final boolean kMotorInverted = false;
+        public static final IdleMode kMotorIdleMode = IdleMode.kBrake;
+        
+    }
+
+    public static final class ShooterConstants {
+
+        public static final int kRightMotorID = 12;
+        public static final int kLeftMotorID = 13;
+
+        public static final boolean kRightMotorInverted = true;
+        public static final boolean kLeftMotorInverted = true;
+
+        public static final IdleMode kMotorsIdleMode = IdleMode.kBrake;
+
     }
 
    

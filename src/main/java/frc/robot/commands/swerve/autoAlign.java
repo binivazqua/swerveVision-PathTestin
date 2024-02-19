@@ -4,33 +4,27 @@
  * {@MÆTH}
  */
 
-package frc.robot.commands.limelight;
+package frc.robot.commands.swerve;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.util.alignConstraints;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.Constants.limelightConstants;
-import frc.robot.Constants.limelightConstants.aprilTag;
-import frc.robot.subsystems.LimeLightObject;
-import frc.robot.subsystems.PhotonLL;
-import frc.robot.subsystems.swerveSusbsystem;
+import frc.robot.subsystems.swerve.swerveSusbsystem;
+import frc.robot.subsystems.vision.PhotonLL;
 
-public class autoAlign extends CommandBase {
+public class autoAlign extends Command {
 
    private final swerveSusbsystem swerve;
     private final PhotonLL limelight;
     private final SlewRateLimiter xLimiter, yLimiter, giroLimiter;
     private final ProfiledPIDController drivePID, strafePID, rotationPID;
     private final double driveOffset, strafeOffset, rotationOffset;
-    private final alignConstraints offsets;
-    
-
+    private final alignConstraints constraints;
     /**
      * Driving command
      * 
@@ -42,7 +36,7 @@ public class autoAlign extends CommandBase {
 
         this.swerve = swerveSusbsystem.getInstance();
         this.limelight = PhotonLL.getInstance();
-        this.offsets = objectConstants;
+        this.constraints = objectConstants;
 
         /**
          * Limiters for acceleration and a better moving of the robot
@@ -55,9 +49,9 @@ public class autoAlign extends CommandBase {
         /**
          * PID Controllers for the align
          */
-        this.drivePID = objectConstants.drivePID;
-        this.strafePID = objectConstants.strafePID;
-        this.rotationPID = objectConstants.rotationPID;
+        this.drivePID = constraints.drivePID;
+        this.strafePID = constraints.strafePID;
+        this.rotationPID = constraints.rotationPID;
         /**
          * Boolean for what target to search
          */
@@ -67,9 +61,9 @@ public class autoAlign extends CommandBase {
          */
         //this.offsets = limelight.getOffsets(alingToAprilTag);  
 
-        this.driveOffset = objectConstants.driveOffset;
-        this.strafeOffset = objectConstants.strafeOffset;
-        this.rotationOffset = objectConstants.rotationOffset;
+        this.driveOffset = constraints.driveOffset;
+        this.strafeOffset = constraints.strafeOffset;
+        this.rotationOffset = constraints.rotationOffset;
 
 
 
@@ -151,7 +145,7 @@ public class autoAlign extends CommandBase {
  
      @Override
      public boolean isFinished() {
-         return false;
+         return drivePID.atGoal() && strafePID.atGoal() && rotationPID.atGoal();
      }
     
     }  

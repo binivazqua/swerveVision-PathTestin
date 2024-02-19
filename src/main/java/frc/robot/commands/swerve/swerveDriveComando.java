@@ -4,19 +4,19 @@
  * {@MÆTH}
  */
 
-package frc.robot.commands;
+package frc.robot.commands.swerve;
 
 import java.util.function.Supplier;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.subsystems.swerveSusbsystem;
+import frc.robot.subsystems.swerve.swerveSusbsystem;
 
-public class swerveDriveComando extends CommandBase {
+public class swerveDriveComando extends Command {
 
     private final swerveSusbsystem swerveSubsystem;
     private final Supplier<Double> driveFunction, strafeFunction, giroFunction;

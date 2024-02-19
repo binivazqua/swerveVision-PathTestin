@@ -12,7 +12,7 @@ public class IntakeButtonCmd extends Command {
   private final IntakeSubsystem intake_subsystem;
 
   private final double speed;
-
+  
   public IntakeButtonCmd(double speed) {
     intake_subsystem = IntakeSubsystem.getInstance();
     // Use addRequirements() here to declare subsystem dependencies.
