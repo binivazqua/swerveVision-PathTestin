@@ -5,52 +5,60 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.lib.util.Functions;
+import frc.robot.Constants;
+import frc.robot.Constants.PivotingConstants;
 
 public class Pivoteo extends SubsystemBase {
 
-    private final CANSparkMax motorIzq; 
-    private final CANSparkMax motorDer; 
+    private final CANSparkMax leftMotor; 
+    private final CANSparkMax rightMotor; 
     
     public static Pivoteo instance;
 
     // Encoders:
-
     //private final AbsoluteEncoder encoderMotorIzq = motorIzq.getAbsoluteEncoder(Type.kDutyCycle);
-    private final AbsoluteEncoder encoderAbs;
+    private final AbsoluteEncoder absoluteEncoder;
 
     public double output;
 
     // PID:
     ProfiledPIDController PID;
 
-
   /** Creates a new ExampleSubsystem. */
   public Pivoteo() {
 
-    motorIzq= new CANSparkMax(10, MotorType.kBrushless);
-    motorDer = new CANSparkMax(9, MotorType.kBrushless);
+    leftMotor= new CANSparkMax(PivotingConstants.kLeftMotorID, MotorType.kBrushless);
+    rightMotor = new CANSparkMax(PivotingConstants.kRightMotorID, MotorType.kBrushless);
 
-    motorDer.restoreFactoryDefaults();
-    motorIzq.restoreFactoryDefaults();
+    rightMotor.restoreFactoryDefaults();
+    leftMotor.restoreFactoryDefaults();
 
-    motorDer.setSmartCurrentLimit(35);
-    motorIzq.setSmartCurrentLimit(35);
+    rightMotor.setSmartCurrentLimit(PivotingConstants.kMotorsCurrentLimit);
+    leftMotor.setSmartCurrentLimit(PivotingConstants.kMotorsCurrentLimit);
 
 
-    encoderAbs = motorDer.getAbsoluteEncoder(Type.kDutyCycle);
+    absoluteEncoder = rightMotor.getAbsoluteEncoder(Type.kDutyCycle);
 
-    motorIzq.setInverted(true);
+    leftMotor.setInverted(PivotingConstants.kLeftMotorInverted);
 
 
     // PID:
-    PID = new ProfiledPIDController(1.35, 0, 0, new TrapezoidProfile.Constraints(22,22));
-    PID.enableContinuousInput(0, 0.995);
+    PID = new ProfiledPIDController(
+    PivotingConstants.kP, 
+    PivotingConstants.kI, 
+    PivotingConstants.kD, 
+      new TrapezoidProfile.Constraints(
+        PivotingConstants.kMaxVelocity,
+        PivotingConstants.kMaxAcceleration));
+
+    PID.enableContinuousInput(
+      PivotingConstants.kPIDminInput, 
+      PivotingConstants.kPIDMaxInput);
     
     
   }
@@ -79,31 +87,31 @@ public class Pivoteo extends SubsystemBase {
   }
 
   public void stopMotors(){
-    motorDer.set(0);
-    motorIzq.set(0);
+    rightMotor.set(0);
+    leftMotor.set(0);
   }
 
   public void setGoal(double goal){
     PID.setGoal(goal + 0.065);
 
-    output = Functions.clamp(PID.calculate(encoderAbs.getPosition()), -0.5, 0.5);
-    motorDer.set(output);
-    motorIzq.set(output);
+    output = Functions.clamp(PID.calculate(absoluteEncoder.getPosition()), -0.5, 0.5);
+    rightMotor.set(output);
+    leftMotor.set(output);
 
   }
 
   public double getAppliedOutput(){
-    return motorDer.getAppliedOutput();
+    return rightMotor.getAppliedOutput();
 
   }
 
   public double getPosition(){
-    return encoderAbs.getPosition();
+    return absoluteEncoder.getPosition();
   }
 
   public void setVelocity(double speed){
-    motorDer.set(speed);
-    motorIzq.set(speed);
+    rightMotor.set(speed);
+    leftMotor.set(speed);
 
   }
 

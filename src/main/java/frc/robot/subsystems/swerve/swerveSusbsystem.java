@@ -4,7 +4,7 @@
  * {@MÆTH}
  */
 
-package frc.robot.subsystems;
+package frc.robot.subsystems.swerve;
 
 
 
@@ -76,7 +76,6 @@ public class swerveSusbsystem extends SubsystemBase {
          
 
     public swerveSusbsystem() {
-
         
         AutoBuilder.configureHolonomic(
             this::getPose, 

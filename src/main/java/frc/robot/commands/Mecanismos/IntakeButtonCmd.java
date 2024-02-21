@@ -13,12 +13,21 @@ public class IntakeButtonCmd extends Command {
 
   private final double speed;
 
+  private boolean detectarNote = false; 
+  
   public IntakeButtonCmd(double speed) {
     intake_subsystem = IntakeSubsystem.getInstance();
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(intake_subsystem);
-
     this.speed = speed;
+  }
+
+  public IntakeButtonCmd(double speed, boolean detectarNote) {
+    intake_subsystem = IntakeSubsystem.getInstance();
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(intake_subsystem);
+    this.speed = speed;
+    this.detectarNote = detectarNote;
   }
 
   // Called when the command is initially scheduled.
@@ -39,11 +48,16 @@ public class IntakeButtonCmd extends Command {
   public void end(boolean interrupted) {
     intake_subsystem.setSpeed(0);
     System.out.println("Intake Button Command Ended Succesfully!");    
+    intake_subsystem.encenderLeds();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
-    }
+    if(intake_subsystem.detectedNote() == true && detectarNote == true)
+      return true;
+    else     
+      return false;
+    //return intake_subsystem.detectedNote();
+  }
 }

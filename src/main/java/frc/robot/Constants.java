@@ -6,6 +6,8 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax.IdleMode;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -183,20 +185,20 @@ public final class Constants {
 
         public static final class aprilTag{
 
-            public static final double kPdrive = 0.1;
+            public static final double kPdrive = 2;
             public static final double kIdrive = 0;
             public static final double kDdrive = 0;
 
-            public static final double kPstrafe = 0.08;
+            public static final double kPstrafe = 0.1;
             public static final double kIstrafe = 0;
             public static final double kDstrafe = 0;
 
-            public static final double kProtation = 0.04;
+            public static final double kProtation = 0.06;
             public static final double kIrotation = 0;
             public static final double kDrotation = 0;
 
             public static final TrapezoidProfile.Constraints driveConstraints = 
-                new TrapezoidProfile.Constraints(3,2);
+                new TrapezoidProfile.Constraints(9,9);
 
             
             public static final TrapezoidProfile.Constraints strafeConstraints = 
@@ -206,9 +208,9 @@ public final class Constants {
             public static final TrapezoidProfile.Constraints rotationConstraints = 
                 new TrapezoidProfile.Constraints(3,2);
             
-            public static double driveOffset = 1;
-            public static double strafeOffset = -0.2;
-            public static double rotationOffset = 10.2;
+            public static double driveOffset = 0.48;
+            public static double strafeOffset = 2.3;
+            public static double rotationOffset = -21.8;
             
             public static ProfiledPIDController drivePID = new ProfiledPIDController(kPdrive, kIdrive, kDdrive, driveConstraints);
             public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
@@ -216,7 +218,7 @@ public final class Constants {
 
 
 
-            public static final alignConstraints offsets =  
+            public static final alignConstraints constraints =  
         new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
@@ -244,7 +246,7 @@ public final class Constants {
 
             
             public static final TrapezoidProfile.Constraints rotationConstraints = 
-                new TrapezoidProfile.Constraints(3,2);
+                new TrapezoidProfile.Constraints(1,1);
 
             public static double driveOffset = 0.08;
             public static double strafeOffset = -5.16;
@@ -254,7 +256,6 @@ public final class Constants {
             public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
             public static ProfiledPIDController rotationPID = new ProfiledPIDController(kProtation, kIrotation, kDrotation, rotationConstraints);
 
-            
 
             public static final alignConstraints offsets =  
         new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
@@ -262,6 +263,48 @@ public final class Constants {
         }
 
         
+    }
+
+    public static final class PivotingConstants {
+
+        public static final int kLeftMotorID = 10;
+        public static final int kRightMotorID = 9;
+
+        public static final int kMotorsCurrentLimit = 35;
+
+        public static final boolean kLeftMotorInverted = true;
+        public static final boolean kRightMotorInverted = false;
+
+        public static final double kP = 1.35;
+        public static final double kI = 0;
+        public static final double kD = 0;
+
+        public static final double kMaxVelocity = 22;
+        public static final double kMaxAcceleration = 22;
+
+        public static final double kPIDminInput = 0;
+        public static final double kPIDMaxInput = 0.995;
+
+    }
+
+    public static final class IntakeConstants {
+    
+        public static final int kMotorID = 11; 
+        public static final boolean kMotorInverted = false;
+        public static final IdleMode kMotorIdleMode = IdleMode.kBrake;
+        
+    }
+
+    public static final class ShooterConstants {
+
+        public static final int kRightMotorID = 12;
+        public static final int kLeftMotorID = 13;
+
+        public static final boolean kRightMotorInverted = true;
+        public static final boolean kLeftMotorInverted = true;
+
+        public static final IdleMode kMotorsIdleMode = IdleMode.kBrake;
+
     }
 
    

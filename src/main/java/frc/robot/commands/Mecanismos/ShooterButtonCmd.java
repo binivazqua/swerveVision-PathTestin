@@ -4,7 +4,6 @@
 
 package frc.robot.commands.Mecanismos;
 
-import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
 import frc.robot.subsystems.Mecanismos.ShooterSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;

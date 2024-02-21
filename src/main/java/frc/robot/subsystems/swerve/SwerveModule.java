@@ -4,7 +4,7 @@
  * {@MÆTH}
  */
 
-package frc.robot.subsystems;
+package frc.robot.subsystems.swerve;
 
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;

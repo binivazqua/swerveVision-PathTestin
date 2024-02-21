@@ -10,8 +10,8 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
   CANSparkMax motorShooterDer;
@@ -22,18 +22,16 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public ShooterSubsystem() {
     /** Initialization for the motor */
-    boolean invertingDer = true;
-    IdleMode modoMotores = IdleMode.kBrake;
 
-    motorShooterDer = new CANSparkMax(12, MotorType.kBrushless);
+    motorShooterDer = new CANSparkMax(ShooterConstants.kRightMotorID, MotorType.kBrushless);
     motorShooterDer.restoreFactoryDefaults();
-    motorShooterDer.setInverted(invertingDer);
-    motorShooterDer.setIdleMode(modoMotores);
+    motorShooterDer.setInverted(ShooterConstants.kRightMotorInverted);
+    motorShooterDer.setIdleMode(ShooterConstants.kMotorsIdleMode);
     
-    motorShooterIzq = new CANSparkMax(13, MotorType.kBrushless);
+    motorShooterIzq = new CANSparkMax(ShooterConstants.kLeftMotorID, MotorType.kBrushless);
     motorShooterIzq.restoreFactoryDefaults();
-    motorShooterIzq.setInverted(invertingDer);
-    motorShooterIzq.setIdleMode(modoMotores);
+    motorShooterIzq.setInverted(ShooterConstants.kLeftMotorInverted);
+    motorShooterIzq.setIdleMode(ShooterConstants.kMotorsIdleMode);
 
     /** Initialization for the relative encoder */
     encoderShooterDer = motorShooterDer.getEncoder();
