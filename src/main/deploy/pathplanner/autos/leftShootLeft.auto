@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.5295283542266556,
-      "y": 5.565873600441298
+      "x": 0.77,
+      "y": 6.77
     },
-    "rotation": 0
+    "rotation": -120.0
   },
   "command": {
     "type": "sequential",
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "New New Path"
+            "pathName": "subwoofer-left-intake"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Blue-left",
   "choreoAuto": false
 }

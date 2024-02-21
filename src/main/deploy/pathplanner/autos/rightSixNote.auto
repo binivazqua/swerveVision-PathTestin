@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.38,
-      "y": 5.51
+      "x": 0.75,
+      "y": 4.42
     },
     "rotation": 0
   },
@@ -14,48 +14,66 @@
         {
           "type": "path",
           "data": {
-            "pathName": "center-left-rot"
+            "pathName": "right-prev-2shoot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "left rotation 2"
+            "pathName": "right-center-2-shoot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "left rotation 3"
+            "pathName": "2shoot-to-center"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Rotation 4"
+            "pathName": "centershoot-prev-left"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Rotation 5"
+            "pathName": "2shoot-2-rightshoot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Rotation 6"
+            "pathName": "left-to-shoot-subwoofer"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Rotation 7"
+            "pathName": "to-left-intake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "left-note-to-wing"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "wing-to-intake-second"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "shoot-second-to-wing"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Blue-complex",
   "choreoAuto": false
 }

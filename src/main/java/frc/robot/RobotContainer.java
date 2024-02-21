@@ -137,7 +137,8 @@ public class RobotContainer {
 
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
-       new JoystickButton(placerJoystick, 9).whileTrue(new PivoteoCommand(0.061)); // 35°
+       //new JoystickButton(placerrJoystick, 5).whileTrue(new PivoteoCommand(0.061)); // 35°
+       new JoystickButton(driverJoytick, 5).whileTrue(new PivoteoCommand(0.061)); // 35°
 
        // --> ROBOT STARTING ZONE <---
        //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
@@ -161,6 +162,14 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, 6).whileTrue(shooter_intake_conDelay());
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
         new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5));
+
+
+        // DRIVER - MECHANISMS //
+
+        // JoystickButton(driverJoytick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        new JoystickButton(driverJoytick, 6).whileTrue(shooter_intake_conDelay());
+        new JoystickButton(driverJoytick, 2).whileTrue(new IntakeButtonCmd(0.5));
+        new JoystickButton(driverJoytick, 3).whileTrue(new IntakeButtonCmd(-0.5));
 
 
 
