@@ -185,20 +185,20 @@ public final class Constants {
 
         public static final class aprilTag{
 
-            public static final double kPdrive = 0.1;
+            public static final double kPdrive = 2;
             public static final double kIdrive = 0;
             public static final double kDdrive = 0;
 
-            public static final double kPstrafe = 0.08;
+            public static final double kPstrafe = 0.1;
             public static final double kIstrafe = 0;
             public static final double kDstrafe = 0;
 
-            public static final double kProtation = 0.04;
+            public static final double kProtation = 0.06;
             public static final double kIrotation = 0;
             public static final double kDrotation = 0;
 
             public static final TrapezoidProfile.Constraints driveConstraints = 
-                new TrapezoidProfile.Constraints(3,2);
+                new TrapezoidProfile.Constraints(9,9);
 
             
             public static final TrapezoidProfile.Constraints strafeConstraints = 
@@ -208,9 +208,9 @@ public final class Constants {
             public static final TrapezoidProfile.Constraints rotationConstraints = 
                 new TrapezoidProfile.Constraints(3,2);
             
-            public static double driveOffset = 1;
-            public static double strafeOffset = -0.2;
-            public static double rotationOffset = 10.2;
+            public static double driveOffset = 0.48;
+            public static double strafeOffset = 2.3;
+            public static double rotationOffset = -21.8;
             
             public static ProfiledPIDController drivePID = new ProfiledPIDController(kPdrive, kIdrive, kDdrive, driveConstraints);
             public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
@@ -218,7 +218,7 @@ public final class Constants {
 
 
 
-            public static final alignConstraints offsets =  
+            public static final alignConstraints constraints =  
         new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
 
         }
@@ -246,7 +246,7 @@ public final class Constants {
 
             
             public static final TrapezoidProfile.Constraints rotationConstraints = 
-                new TrapezoidProfile.Constraints(3,2);
+                new TrapezoidProfile.Constraints(1,1);
 
             public static double driveOffset = 0.08;
             public static double strafeOffset = -5.16;

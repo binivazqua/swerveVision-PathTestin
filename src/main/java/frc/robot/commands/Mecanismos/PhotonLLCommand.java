@@ -31,6 +31,7 @@ public class PhotonLLCommand extends Command {
   @Override
   public void execute() {
     photonCamera.periodic();
+    
   }
 
   // Called once the command ends or is interrupted.

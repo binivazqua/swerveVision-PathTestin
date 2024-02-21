@@ -10,6 +10,7 @@ import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.util.alignConstraints;
 import frc.robot.Constants.DriveConstants;
@@ -101,17 +102,17 @@ public class autoAlign extends Command {
 
             velForward = drivePID.calculate(limelight.getArea(), driveOffset);
             velStrafe = strafePID.calculate(limelight.getXDistance(), strafeOffset);
-            velGiro = -rotationPID.calculate(limelight.getYaw(), rotationOffset); 
+            velGiro = rotationPID.calculate(limelight.getYaw(), rotationOffset); 
         } else if(limelight.hasValueTargets() == false){
             velForward = 0;
             velStrafe = 0;
-            velGiro = 0.4;  
+            velGiro = 0;  
         } else {
             velForward = 0;
             velStrafe = 0;
             velGiro = 0; 
         }
- 
+        SmartDashboard.putNumber("DRIVE OUTPUT", velForward);
          // 2. Apply deadband
           velForward = Math.abs(velForward) > OIConstants.kDeadband ? velForward : 0.0;
          velStrafe = Math.abs(velStrafe) > OIConstants.kDeadband ? velStrafe : 0.0;
@@ -122,6 +123,8 @@ public class autoAlign extends Command {
          velStrafe = yLimiter.calculate(velStrafe) * 3;
          velGiro = giroLimiter.calculate(velGiro) * 5;
  
+         SmartDashboard.putNumber("giro output", velGiro);
+         SmartDashboard.putNumber("GIRO GOAL", rotationPID.getGoal().position);
          // 4. Construct desired chassis speeds
          ChassisSpeeds chassisSpeeds;
          

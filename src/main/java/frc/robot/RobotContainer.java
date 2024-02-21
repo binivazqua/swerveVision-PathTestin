@@ -15,12 +15,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
+import frc.robot.Constants.limelightConstants.aprilTag;
 import frc.robot.commands.Mecanismos.ArmVelocityCommand;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PhotonLLCommand;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.ShooterButtonCmd;
 import frc.robot.commands.hybrid.subroutines;
+import frc.robot.commands.swerve.autoAlign;
 import frc.robot.commands.swerve.swerveDriveComando;
 import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
@@ -106,7 +108,7 @@ public class RobotContainer {
 
        //PS4:
        //new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign(limelightConstants.noteOffsets.offsets));
-       //new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(limelightConstants.aprilTag.offsets));
+       new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(aprilTag.constraints));
 
 
        //PID PIVOTEO PRUEBA:
@@ -116,15 +118,15 @@ public class RobotContainer {
 
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
-       new JoystickButton(placerJoystick, 9).whileTrue(new PivoteoCommand(0.061)); // 35°
-
+       new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
+ 
        // --> ROBOT STARTING ZONE <---
        //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
 
 
        // --> 50° <---
        //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.122)); // 44°
-       new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.075)); // 44°
+       new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
 
 
     /* 
@@ -136,10 +138,11 @@ public class RobotContainer {
     
 
         // COMMENTED OTHER COMMANDS:
-        new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
-        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
+        new JoystickButton(placerJoystick, 6).whileTrue(new ShooterButtonCmd(-0.75));
+        new JoystickButton(placerJoystick, 5).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
-        new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5));
+        //recoger
+        new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5, true));
 
 
 
