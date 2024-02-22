@@ -32,19 +32,51 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "neitoCommand",
-      "waypointRelativePos": 0.5,
+      "name": "intakeaNota",
+      "waypointRelativePos": 0.0,
       "command": {
-        "type": "sequential",
+        "type": "parallel",
         "data": {
           "commands": [
             {
               "type": "named",
               "data": {
-                "name": "neitoCommand"
+                "name": "intakeCommand"
+              }
+            },
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 1.0
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "shooterCommand"
               }
             }
           ]
+        }
+      }
+    },
+    {
+      "name": "intakeaNota2",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "shooteaNota",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
         }
       }
     }
