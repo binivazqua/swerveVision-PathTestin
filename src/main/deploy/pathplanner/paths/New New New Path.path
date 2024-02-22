@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.059586519888604,
-        "y": 5.595244965087426
+        "x": 1.2,
+        "y": 4.3
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.3679858486729504,
-        "y": 5.609930647410491
+        "x": 2.2,
+        "y": 3.8
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.293183835025989,
-        "y": 5.595244965087426
+        "x": 7.682829247590518,
+        "y": 7.445640937793504
       },
       "prevControl": {
-        "x": 2.7851541928486365,
-        "y": 5.524088926532057
-      },
-      "nextControl": {
-        "x": 1.8012134772033406,
-        "y": 5.666401003642795
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 2.293183835025989,
-        "y": 4.038562638842631
-      },
-      "prevControl": {
-        "x": 1.456099942611335,
-        "y": 4.420390379242297
+        "x": 7.432829247590518,
+        "y": 8.94564093779351
       },
       "nextControl": null,
       "isLocked": false,
@@ -59,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "clase",
+  "folder": "translations",
   "previewStartingState": null,
   "useDefaultConstraints": false
 }

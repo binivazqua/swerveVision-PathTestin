@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.5295283542266556,
-      "y": 5.565873600441298
+      "x": 1.27,
+      "y": 5.57
     },
-    "rotation": 0
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "New New Path"
+            "pathName": "subwoofer-center-shoot"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Blue-center",
   "choreoAuto": false
 }

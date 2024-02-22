@@ -159,6 +159,14 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));
 
 
+        // DRIVER - MECHANISMS //
+
+        // JoystickButton(driverJoytick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        new JoystickButton(driverJoytick, 6).whileTrue(subroutines.shootWithDelay());
+        new JoystickButton(driverJoytick, 2).whileTrue(new IntakeButtonCmd(0.5));
+        new JoystickButton(driverJoytick, 3).whileTrue(new IntakeButtonCmd(-0.5));
+
+
 
 
         

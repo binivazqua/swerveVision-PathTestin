@@ -3,10 +3,21 @@
   "robotLength": 0.79,
   "holonomicMode": true,
   "pathFolders": [
+    "Blue-unique-paths",
+    "transitions",
+    "Upchuck",
     "clase",
-    "miercoles-de-plaza"
+    "miercoles-de-plaza",
+    "translations"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "Blue-complex",
+    "Blue-center",
+    "Blue-left",
+    "Left-center",
+    "Blue-right",
+    "Upchuck"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

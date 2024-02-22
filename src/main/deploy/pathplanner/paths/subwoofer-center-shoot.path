@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.23,
-        "y": 5.5
+        "x": 1.2651860724115016,
+        "y": 5.565873600441298
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2446856823230639,
-        "y": 5.5
+        "x": 1.2798717547345655,
+        "y": 5.565873600441298
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.84,
-        "y": 5.5
+        "x": 2.249126788056797,
+        "y": 5.565873600441298
       },
       "prevControl": {
-        "x": 2.832657158838467,
-        "y": 5.5
+        "x": 2.2417839468952643,
+        "y": 5.565873600441298
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "intakeNote",
-      "waypointRelativePos": 0.35,
+      "name": "intakeaNota",
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,16 +41,42 @@
             {
               "type": "named",
               "data": {
-                "name": "intakeNote"
+                "name": "intakeCommand"
+              }
+            },
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 1.0
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "lowPivotToGround"
+                "name": "shooterCommand"
               }
             }
           ]
+        }
+      }
+    },
+    {
+      "name": "intakeaNota2",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "shooteaNota",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
         }
       }
     }
@@ -67,7 +93,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue-unique-paths",
   "previewStartingState": null,
   "useDefaultConstraints": false
 }
