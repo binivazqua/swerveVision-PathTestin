@@ -94,7 +94,7 @@ public class Pivoteo extends SubsystemBase {
   public void setGoal(double goal){
     PID.setGoal(goal + 0.065);
 
-    output = Functions.clamp(PID.calculate(absoluteEncoder.getPosition()), -0.5, 0.5);
+    output = Functions.clamp(PID.calculate(absoluteEncoder.getPosition()), -0.2, 0.2);
     rightMotor.set(output);
     leftMotor.set(output);
 

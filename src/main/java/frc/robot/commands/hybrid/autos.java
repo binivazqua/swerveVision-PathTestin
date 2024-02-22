@@ -36,7 +36,7 @@ public class autos {
     }
 */
     public static Command test_papaya() {
-        return AutoBuilder.buildAuto("leftRotation");
+        return AutoBuilder.buildAuto("centerShootLeave");
     }
 
 

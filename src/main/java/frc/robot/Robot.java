@@ -10,10 +10,16 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.Mecanismos.IntakeButtonCmd;
+import frc.robot.commands.Mecanismos.PivoteoCommand;
+import frc.robot.commands.Mecanismos.setPivotVelocity;
+import frc.robot.commands.hybrid.subroutines;
 import frc.robot.subsystems.swerve.swerveSusbsystem;
 
 /**
@@ -54,6 +60,15 @@ public class Robot extends TimedRobot {
         m_robotContainer = new RobotContainer();
         swerve = swerveSusbsystem.getInstance();
         swerve.resetEncoders();
+
+        NamedCommands.registerCommand("ShootWithDelay", subroutines.shootWithDelay());
+        NamedCommands.registerCommand("lowArm", subroutines.lowArm());
+        NamedCommands.registerCommand("lowArmAndShoot", subroutines.lowArmAndShoot());
+        NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.5, true));
+        NamedCommands.registerCommand("aimAtSubwoofer", new PivoteoCommand(0.061).withTimeout(2));
+        NamedCommands.registerCommand("lowPivotToGround", new setPivotVelocity(0));
+
+
 
 
         

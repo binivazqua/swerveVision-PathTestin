@@ -8,10 +8,12 @@ package frc.robot;
 
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
@@ -21,6 +23,7 @@ import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PhotonLLCommand;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.ShooterButtonCmd;
+import frc.robot.commands.hybrid.autos;
 import frc.robot.commands.hybrid.subroutines;
 import frc.robot.commands.swerve.autoAlign;
 import frc.robot.commands.swerve.swerveDriveComando;
@@ -44,6 +47,7 @@ public class RobotContainer {
     
     public RobotContainer(){
 
+        
         
         swerveSubsystem = swerveSusbsystem.getInstance();
         photoncamera = PhotonLL.getInstance();
@@ -119,7 +123,8 @@ public class RobotContainer {
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
        new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
- 
+        
+
        // --> ROBOT STARTING ZONE <---
        //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
 
@@ -129,6 +134,13 @@ public class RobotContainer {
        new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
 
 
+        new JoystickButton(placerJoystick,1).whileTrue(new SequentialCommandGroup(
+            new PivoteoCommand(0.26),
+            new PivoteoCommand(0.061)
+        )); // 44°
+
+
+        
     /* 
        m_operatorController.R1().whileTrue(new ShooterButtonCmd(-0.75));
        m_operatorController.cross().whileTrue(new IntakeButtonCmd(0.5));
@@ -138,11 +150,13 @@ public class RobotContainer {
     
 
         // COMMENTED OTHER COMMANDS:
+         
         new JoystickButton(placerJoystick, 6).whileTrue(new ShooterButtonCmd(-0.75));
         new JoystickButton(placerJoystick, 5).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
+        
         //recoger
-        new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5, true));
+        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));
 
 
 
@@ -152,7 +166,7 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
        
-       return null;
+       return autos.test_papaya();
 
     }
 

@@ -3,18 +3,18 @@ package frc.robot.commands.Mecanismos;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class PivoteoCommand extends Command {
+public class setPivotVelocity extends Command {
   private final Pivoteo arm;
 
-    private final double goal;     
+    private final double velocity;     
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public PivoteoCommand(double goal) {
+  public setPivotVelocity(double velocity) {
     arm = Pivoteo.getInstance();
-    this.goal = goal;
+    this.velocity = velocity;
     
     addRequirements(arm);
   }
@@ -28,7 +28,7 @@ public class PivoteoCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    arm.setGoal(goal);
+    arm.setVelocity(velocity);
   }
 
   // Called once the command ends or is interrupted.
@@ -43,10 +43,7 @@ public class PivoteoCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(goal == 0.26)
-      return arm.atGoal();
-    else 
-      return false;
+    return false;
   }
 }
 
