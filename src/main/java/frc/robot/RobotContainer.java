@@ -178,7 +178,6 @@ public class RobotContainer {
 
 
         // CLIMBER COMMAND:
-        new POVButton(placerJoystick, 90).whileFalse(new ClimbCommand(false));
         new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
 
 

@@ -14,7 +14,7 @@ public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   public ClimberSubsystem() {
 
-    solenoide = new Solenoid(PneumaticsModuleType.REVPH, 0);
+    solenoide = new Solenoid(PneumaticsModuleType.REVPH, 8);
     
   }
 
