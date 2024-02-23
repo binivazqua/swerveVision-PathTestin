@@ -15,10 +15,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
 import frc.robot.Constants.limelightConstants.aprilTag;
 import frc.robot.commands.Mecanismos.ArmVelocityCommand;
+import frc.robot.commands.Mecanismos.ClimbCommand;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PhotonLLCommand;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
@@ -27,6 +29,7 @@ import frc.robot.commands.hybrid.autos;
 import frc.robot.commands.hybrid.subroutines;
 import frc.robot.commands.swerve.autoAlign;
 import frc.robot.commands.swerve.swerveDriveComando;
+import frc.robot.subsystems.Mecanismos.ClimberSubsystem;
 import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
 import frc.robot.subsystems.Mecanismos.ShooterSubsystem;
@@ -38,6 +41,7 @@ public class RobotContainer {
     private swerveSusbsystem swerveSubsystem;
     private PhotonLL photoncamera;
     private Pivoteo arm;
+    private ClimberSubsystem climber;
     private final IntakeSubsystem m_intakeSubsystem;
     private final ShooterSubsystem m_shooterSubsystem;
 
@@ -52,8 +56,10 @@ public class RobotContainer {
         swerveSubsystem = swerveSusbsystem.getInstance();
         photoncamera = PhotonLL.getInstance();
         arm = Pivoteo.getInstance();
+        climber = ClimberSubsystem.getInstance();
         m_intakeSubsystem = IntakeSubsystem.getInstance();
         m_shooterSubsystem = ShooterSubsystem.getInstance();
+
 
         // "save" a command in order to call it within an event marker.
 
@@ -90,6 +96,10 @@ public class RobotContainer {
         // shooter:
         m_shooterSubsystem.setDefaultCommand(
             new ShooterButtonCmd(0)//
+        );
+
+        climber.setDefaultCommand(
+            new ClimbCommand(false)
         );
 
         
@@ -165,6 +175,11 @@ public class RobotContainer {
         new JoystickButton(driverJoytick, 6).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(driverJoytick, 2).whileTrue(new IntakeButtonCmd(0.5));
         new JoystickButton(driverJoytick, 3).whileTrue(new IntakeButtonCmd(-0.5));
+
+
+        // CLIMBER COMMAND:
+        new POVButton(placerJoystick, 90).whileFalse(new ClimbCommand(false));
+        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
 
 
 
