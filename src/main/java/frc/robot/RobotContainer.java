@@ -133,17 +133,35 @@ public class RobotContainer {
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
        //new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
-        
-
        // --> ROBOT STARTING ZONE <---
        //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
-
-
-       // --> 50° <---
+       // TRAP
        //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.122)); // 44°
-       new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
 
-       new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.40)); // 44°
+       // MECHANISMS
+        //new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
+
+       //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.40)); // 
+
+         
+       // PS4 JOYSTICKS
+
+        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075)); // 44°
+
+        new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.40)); // 
+        // NOTE MECHANISMS:
+        new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
+        // recoger
+        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));
+        // escupir
+        new JoystickButton(placerJoystick, 3).whileTrue(new IntakeButtonCmd(0.5));
+
+        // climber:
+        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
+
+    
+
 
 
         // BAJAR BRAZO
@@ -153,37 +171,6 @@ public class RobotContainer {
             new PivoteoCommand(0.061)
         )); // 44°
         */
-
-        
-    /* 
-       m_operatorController.R1().whileTrue(new ShooterButtonCmd(-0.75));
-       m_operatorController.cross().whileTrue(new IntakeButtonCmd(0.5));
-       m_operatorController.square().whileTrue(new IntakeButtonCmd(-0.5));
-       m_operatorController.R2().whileTrue(shooter_intake_conDelay());
-      */ 
-    
-
-        // COMMENTED OTHER COMMANDS:
-         
-        new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
-        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
-        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
-        
-        //recoger
-        new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5, true));
-
-
-        // DRIVER - MECHANISMS //
-
-        // JoystickButton(driverJoytick, 5).whileTrue(new ShooterButtonCmd(-0.75));
-        /* 
-        new JoystickButton(driverJoytick, 6).whileTrue(subroutines.shootWithDelay());
-        new JoystickButton(driverJoytick, 2).whileTrue(new IntakeButtonCmd(0.5));
-        new JoystickButton(driverJoytick, 3).whileTrue(new IntakeButtonCmd(-0.5));
-        */
-
-        // CLIMBER COMMAND:
-        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
 
 
 
