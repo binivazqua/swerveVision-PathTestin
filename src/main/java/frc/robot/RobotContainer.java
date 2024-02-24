@@ -125,7 +125,7 @@ public class RobotContainer {
        // ========================== DRIVER JOYSTICKS  ========================================//
 
         // LOWER VELOCITY:
-       new JoystickButton(driverJoytick, 5).whileFalse(
+       new JoystickButton(driverJoytick, Constants.PS4OIConstants.topLeft).whileFalse(
         new swervePrecisionCommand(swerve, 
         () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
                     () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
@@ -135,7 +135,7 @@ public class RobotContainer {
        );
 
         // INCREASE VELOCITY:
-       new JoystickButton(driverJoytick, 6).whileFalse(
+       new JoystickButton(driverJoytick, Constants.PS4OIConstants.topRight).whileFalse(
         new swerveDriveComando(swerve, 
         () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
                     () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
@@ -145,40 +145,40 @@ public class RobotContainer {
        );
 
         // RESEAT HEADING:
-        new JoystickButton(driverJoytick, 4).whileFalse(
+        new JoystickButton(driverJoytick, Constants.PS4OIConstants.triangle).whileFalse(
             new InstantCommand(
                 () -> swerve.resetHeading()
             )
         );
 
         // ALIGN TO APRILTAG:
-        new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(aprilTag.constraints));
+        new JoystickButton(driverJoytick, Constants.PS4OIConstants.square).whileTrue(new autoAlign(aprilTag.constraints));
 
 
        // =============================== ÁNGULOS PIVOTEO ==================================== //
         
         // BAJAR BRAZO
-        new JoystickButton(placerJoystick,1).whileTrue(new SequentialCommandGroup(
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.square).whileTrue(new SequentialCommandGroup(
             new PivoteoCommand(0.26),
             new PivoteoCommand(0.061)
         )); // 44°
        
         // ÁNGULO SHOOT:
-        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075));// 44°
+        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickIzq).whileTrue(new PivoteoCommand(0.075));// 44°
 
         // ÁNGULO TRAP/SHOOTEAR DE LEJOS
-        new JoystickButton(placerJoystick,5).whileTrue(new PivoteoCommand(0.061)); // 35°
+        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileTrue(new PivoteoCommand(0.061)); // 35°
 
         // ÁNGULO TRAP/ SHOOTEAR DE LEJOS:
-       new JoystickButton(placerJoystick,4).whileTrue(new PivoteoCommand(0.122)); // 44°
+       new JoystickButton(placerJoystick,Constants.PS4OIConstants.triangle).whileTrue(new PivoteoCommand(0.122)); // 44°
 
         // ÁNGULO CLIMBER:
         //new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
-        new JoystickButton(placerJoystick,12).whileFalse(new PivoteoCommand(0.51)); // 90 grados (empujón)
+        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileFalse(new PivoteoCommand(0.51)); // 90 grados (empujón)
 
         
         // Tiro al AMP (Boton de PS)
-        new JoystickButton(placerJoystick, 13).whileTrue(subroutines.shootToAmp()); 
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.PSButton).whileTrue(subroutines.shootToAmp()); 
 
        // =============================== NOTE SCORING ====================================== //
 
@@ -186,13 +186,13 @@ public class RobotContainer {
         //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75)); // 
 
         // SHOOT
-        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.topRight).whileTrue(subroutines.shootWithDelay());
 
         // recoger
-        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
         
         // escupir
-        new JoystickButton(placerJoystick, 3).whileTrue(new IntakeButtonCmd(0.5));
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.5));
 
         // climber:
         new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
