@@ -120,37 +120,11 @@ public class RobotContainer {
     
     private void configureButtonBindings() {
 
-        //APRIL TAG:
-       //new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());
-
-       //PS4:
-       //new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign(limelightConstants.noteOffsets.offsets));
-       new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(aprilTag.constraints));
-
-
-       //PID PIVOTEO PRUEBA:
-       //new JoystickButton(placerJoystick, 3).whileTrue(new PivoteoCommand(0.2)); // x
-       //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.25)); // a
-       //new JoystickButton(placerJoystick, 2).whileTrue(new PivoteoCommand(0.05)); // b
-
-       // SHOOTING POSITIONS:
-       // --> SUBWOOFER <----
-       //new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
-
-       // --> ROBOT STARTING ZONE <---
-       //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
-
-       // TRAP 1:
-       new JoystickButton(placerJoystick,4).whileTrue(new PivoteoCommand(0.122)); // 44°
-
-       // MECHANISMS
-        //new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
-
-       //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.40)); // 
-
+       
          
-       // PS4 JOYSTICKS
+       // ========================== DRIVER JOYSTICKS  ========================================//
 
+        // LOWER VELOCITY:
        new JoystickButton(driverJoytick, 5).whileFalse(
         new swervePrecisionCommand(swerve, 
         () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
@@ -160,6 +134,7 @@ public class RobotContainer {
                     true)
        );
 
+        // INCREASE VELOCITY:
        new JoystickButton(driverJoytick, 6).whileFalse(
         new swerveDriveComando(swerve, 
         () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
@@ -169,44 +144,76 @@ public class RobotContainer {
                     true)
        );
 
-        // SHOOT:
-        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075));// 44°
+        // RESEAT HEADING:
+        new JoystickButton(driverJoytick, 4).whileFalse(
+            new InstantCommand(
+                () -> swerve.resetHeading()
+            )
+        );
 
-        // TRAP #2
-        new JoystickButton(placerJoystick,5).whileTrue(new PivoteoCommand(0.061)); // 35°
+        // ALIGN TO APRILTAG:
+        new JoystickButton(driverJoytick, 1).whileTrue(new autoAlign(aprilTag.constraints));
 
-        // PIVOTEO CLIMBER:
-        //new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // home position
-        new JoystickButton(placerJoystick,12).whileFalse(new PivoteoCommand(0.51)); // 90 grados
 
-       
-        // NOTE MECHANISMS:
-        //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
-        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
-        // recoger
-        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
-        // escupir
-        new JoystickButton(placerJoystick, 3).whileTrue(new IntakeButtonCmd(0.5));
-
-        // climber:
-        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
+       // =============================== ÁNGULOS PIVOTEO ==================================== //
         
         // BAJAR BRAZO
         new JoystickButton(placerJoystick,1).whileTrue(new SequentialCommandGroup(
             new PivoteoCommand(0.26),
             new PivoteoCommand(0.061)
         )); // 44°
+       
+        // ÁNGULO SHOOT:
+        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075));// 44°
+
+        // ÁNGULO TRAP/SHOOTEAR DE LEJOS
+        new JoystickButton(placerJoystick,5).whileTrue(new PivoteoCommand(0.061)); // 35°
+
+        // ÁNGULO TRAP/ SHOOTEAR DE LEJOS:
+       new JoystickButton(placerJoystick,4).whileTrue(new PivoteoCommand(0.122)); // 44°
+
+        // ÁNGULO CLIMBER:
+        //new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
+        new JoystickButton(placerJoystick,12).whileFalse(new PivoteoCommand(0.51)); // 90 grados (empujón)
+
         
+        // Tiro al AMP (Boton de PS)
+        new JoystickButton(placerJoystick, 13).whileTrue(subroutines.shootToAmp()); 
 
-         new JoystickButton(driverJoytick, 4).whileFalse(
-            new InstantCommand(
-                () -> swerve.resetHeading()
-            )
-        );
+       // =============================== NOTE SCORING ====================================== //
 
-        // Tiro al AMP
-        new JoystickButton(placerJoystick, 13).whileTrue(subroutines.shootToAmp());
+        // shoot sin delay:
+        //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75)); // 
 
+        // SHOOT
+        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
+
+        // recoger
+        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
+        
+        // escupir
+        new JoystickButton(placerJoystick, 3).whileTrue(new IntakeButtonCmd(0.5));
+
+        // climber:
+        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
+
+         //================================== APRIL TAG: ==============================================//
+       //new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());
+       //new JoystickButton(driverJoytick, 2).whileTrue(new autoAlign(limelightConstants.noteOffsets.offsets));
+
+       // =============================  SHOOTING POSITIONS TBC ===================================== //
+       // --> SUBWOOFER <----
+       //new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
+
+       // --> ROBOT STARTING ZONE <---
+       //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
+
+    
+        // ======================================== X-BOX PLACER JOYSTICKS ===========================//
+        // MECHANISMS
+        //new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
+
+       //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.40)); // 
 
         
     }
