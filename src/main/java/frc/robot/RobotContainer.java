@@ -132,7 +132,7 @@ public class RobotContainer {
 
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
-       new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
+       //new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
         
 
        // --> ROBOT STARTING ZONE <---
@@ -143,12 +143,16 @@ public class RobotContainer {
        //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.122)); // 44°
        new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
 
+       new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.40)); // 44°
 
+
+        // BAJAR BRAZO
+        /* 
         new JoystickButton(placerJoystick,1).whileTrue(new SequentialCommandGroup(
             new PivoteoCommand(0.26),
             new PivoteoCommand(0.061)
         )); // 44°
-
+        */
 
         
     /* 
@@ -161,21 +165,22 @@ public class RobotContainer {
 
         // COMMENTED OTHER COMMANDS:
          
-        new JoystickButton(placerJoystick, 6).whileTrue(new ShooterButtonCmd(-0.75));
-        new JoystickButton(placerJoystick, 5).whileTrue(subroutines.shootWithDelay());
+        new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(0.5));
         
         //recoger
-        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));
+        new JoystickButton(placerJoystick, 1).whileTrue(new IntakeButtonCmd(-0.5, true));
 
 
         // DRIVER - MECHANISMS //
 
         // JoystickButton(driverJoytick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        /* 
         new JoystickButton(driverJoytick, 6).whileTrue(subroutines.shootWithDelay());
         new JoystickButton(driverJoytick, 2).whileTrue(new IntakeButtonCmd(0.5));
         new JoystickButton(driverJoytick, 3).whileTrue(new IntakeButtonCmd(-0.5));
-
+        */
 
         // CLIMBER COMMAND:
         new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));

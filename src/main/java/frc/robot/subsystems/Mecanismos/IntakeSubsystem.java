@@ -31,7 +31,10 @@ public class IntakeSubsystem extends SubsystemBase {
   private boolean detectedgreen;
   private boolean detectedblue;
 
+  private boolean inRange;
+
   private Color detectedColor;
+  private int proximity;
 
   public IntakeSubsystem() {
     /** Initialization for the motor */
@@ -45,6 +48,7 @@ public class IntakeSubsystem extends SubsystemBase {
     m_colorSensor = new ColorSensorV3(i2cPort);
 
     detectedColor = m_colorSensor.getColor();
+    //proximity = m_colorSensor.getProximity();
 
     /** Initialization for the relative encoder */
     encoderIntake = motorIntake.getEncoder();
@@ -56,6 +60,9 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake.set(speed);
   }
 
+  public int getProximity() {
+    return m_colorSensor.getProximity();
+  }
   public double getEncoder(){
     return encoderIntake.getPosition();
   }
@@ -72,41 +79,86 @@ public class IntakeSubsystem extends SubsystemBase {
     pdh.setSwitchableChannel(detectedNote());
   }
 
-  public boolean detectedNote(){
-    if (detectedColor.red > .30 && detectedColor.red < .55){
+  public boolean noteColorDetected(){
+
+    if (detectedColor.red > 0.30 && detectedColor.red < 0.55){
       detectedred = true;
     } else{
-      detectedred= false;
+      detectedred = false;
     }
 
-    if (detectedColor.green > .35 && detectedColor.green < .48){
-      detectedgreen =true;
+    if (detectedColor.green > 0.39 && detectedColor.green < 0.45){
+      detectedgreen = true;
       
     } else {
-      detectedgreen= false;
+      detectedgreen = false;
   
     }
 
-   if (detectedColor.blue > .10 && detectedColor.blue < .23){
-      detectedblue =true;
+   if (detectedColor.blue > 0.10 && detectedColor.blue < 0.23){
+      detectedblue = true;
       
     } else {
       detectedblue= false;
   
     }
+    
 
     return detectedblue && detectedgreen && detectedred;
+
+  }
+
+  public boolean detectedNote(){
+    
+    return noteInRange();
+    
+    
+
+  }
+
+  public boolean noteInRange(){
+    if (getProximity() > 100 && getProximity() < 250){
+      inRange = true;
+    } else {
+      inRange = false;
+    }
+
+    return inRange;
+
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+
+    detectedColor = m_colorSensor.getColor();
+
+    // INTAKE INFO
+
     SmartDashboard.putNumber("Encoder Intake", getEncoder());
     SmartDashboard.putBoolean("Note loaded?", detectedNote());
     SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
+    SmartDashboard.putNumber("PROXIMITY:", getProximity());
+    SmartDashboard.putBoolean("IN RANGE:", noteInRange());
+    SmartDashboard.putBoolean("COLOR DETECTED?", noteColorDetected());
+
+    // RAW COLOR:
+    SmartDashboard.putString("Raw Color: ", m_colorSensor.getRawColor().toString());
+    SmartDashboard.putNumber("Raw RED: ", m_colorSensor.getRawColor().red);
+    SmartDashboard.putNumber("Raw GREEN: ", m_colorSensor.getRawColor().green);
+    SmartDashboard.putNumber("Raw BLUE: ", m_colorSensor.getRawColor().blue);
+
+    // INTEGER COLOR:
+    SmartDashboard.putNumber("INTEGER RED", detectedColor.red);
+    SmartDashboard.putNumber("INTEGER GREEN", detectedColor.green);
+    SmartDashboard.putNumber("INTEGER BLUE", detectedColor.blue);
 
 
-    detectedColor = m_colorSensor.getColor();
+
+    // INTEGER COLORS:
+    SmartDashboard.putString("HEX STRING: ", detectedColor.toHexString());
+    SmartDashboard.putString("COLOR STRING: ", detectedColor.toString());
+
   }
 
   private static IntakeSubsystem instance;

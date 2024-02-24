@@ -56,10 +56,11 @@ public class Pivoteo extends SubsystemBase {
         PivotingConstants.kMaxVelocity,
         PivotingConstants.kMaxAcceleration));
 
+      /* 
     PID.enableContinuousInput(
       PivotingConstants.kPIDminInput, 
       PivotingConstants.kPIDMaxInput);
-    
+    */
     
   }
 
