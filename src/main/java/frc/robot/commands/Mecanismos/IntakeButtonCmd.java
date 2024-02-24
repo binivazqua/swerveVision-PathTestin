@@ -48,13 +48,13 @@ public class IntakeButtonCmd extends Command {
   public void end(boolean interrupted) {
     intake_subsystem.setSpeed(0);
     System.out.println("Intake Button Command Ended Succesfully!");    
-    intake_subsystem.encenderLeds();
+    //intake_subsystem.encenderLeds();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(intake_subsystem.detectedNote() == true && detectarNote == true)
+    if(intake_subsystem.getSensorInfrarrojo() == true && detectarNote == true)
       return true;
     else     
       return false;

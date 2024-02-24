@@ -147,7 +147,7 @@ public class swerveSusbsystem extends SubsystemBase {
     * @return the heading of the robot
     */
     public double getHeading() {
-        return Math.IEEEremainder(-gyro.getAngle(), 360);
+        return Math.IEEEremainder(-gyro.getAngle(), 360)-180;
     }
 
     /** Returns the module states (turn angles and drive velocities) for all of the modules. */
@@ -190,6 +190,10 @@ public class swerveSusbsystem extends SubsystemBase {
             rearLeft.getPosition(),
             rearRight.getPosition()
          }, pose);
+    }
+
+    public void resetHeading(){
+        gyro.reset();
     }
 
     /**Method for converting Chasssis speeds to {@SwerveModuleStates} and setting

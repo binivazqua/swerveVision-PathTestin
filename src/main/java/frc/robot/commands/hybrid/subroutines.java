@@ -25,11 +25,19 @@ public class subroutines {
 
      public static Command shootWithDelay() {
         return new SequentialCommandGroup(
-            new ShooterButtonCmd(0.7).withTimeout(0.8), // DELAY CHANGED FROM 1s to 0.8s
+            new ShooterButtonCmd(0.7).withTimeout(0.95), // DELAY CHANGED FROM 1s to 0.8s
             new ParallelCommandGroup(
                 new ShooterButtonCmd(0.7),
                 new IntakeButtonCmd(-0.5))
                 ).withTimeout(2);
+    
+    }
+
+    public static Command shootToAmp() {
+        return new ParallelCommandGroup(
+                new ShooterButtonCmd(0.225),
+                new IntakeButtonCmd(-0.25)
+                ).withTimeout(1.2);
     
     }
 

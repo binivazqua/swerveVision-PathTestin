@@ -77,13 +77,11 @@ public class Pivoteo extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putBoolean("AT GOAL", atGoal());
     SmartDashboard.putNumber("PID GOAL", PID.getGoal().position);
-    SmartDashboard.putNumber("TOLERANCE", PID.getPositionTolerance());
-    SmartDashboard.putNumber("TOLERANCE", PID.getPositionError());
 
     // K OFFSET = 0.0448
 
-    SmartDashboard.putNumber("PID OUTPUT", output);
-    SmartDashboard.putNumber("ENCODER VALUE", getPosition());
+    SmartDashboard.putNumber("PIVOT VALUE", getPosition());
+    SmartDashboard.putNumber("PIVOT OUTPUT", getAppliedOutput());
 
   }
 

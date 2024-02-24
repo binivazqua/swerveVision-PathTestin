@@ -17,7 +17,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.swerve.swerveSusbsystem;
 
-public class swerveDriveComando extends Command {
+public class swervePrecisionCommand extends Command {
 
     private final swerveSusbsystem swerveSubsystem;
     private final Supplier<Double> driveFunction, strafeFunction, giroFunction;
@@ -35,7 +35,7 @@ public class swerveDriveComando extends Command {
      * @param rotationVelocityFunction Supplier for the rotation function
      * @param fieldOrientedFunction Boolean for whether the drive will be field oriented
      */
-    public swerveDriveComando(swerveSusbsystem subsistemaSwerve,
+    public swervePrecisionCommand(swerveSusbsystem subsistemaSwerve,
             Supplier<Double> velAvanceFuncion, Supplier<Double> velStrafeFuncion, Supplier<Double> velGiroFuncion,
             Supplier<Boolean> fieldOrientedFunction, Boolean joystickDrive
             ) {
@@ -94,10 +94,10 @@ public class swerveDriveComando extends Command {
 
          // 3. Make the driving smoother
          // CHANGE VELOCITY @RAMOS//
-        driveVel = xLimiter.calculate(driveVel) * 9;
-        strafeVel = yLimiter.calculate(strafeVel) * 9;
+        driveVel = xLimiter.calculate(driveVel) * 5;
+        strafeVel = yLimiter.calculate(strafeVel) * 5;
         rotationVel = giroLimiter.calculate(rotationVel)
-                * 9;
+                * 7;
 
                 SmartDashboard.putNumber("drive velocity", driveVel);
                 SmartDashboard.putNumber("strafe velocity", strafeVel);

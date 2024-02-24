@@ -13,6 +13,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -25,10 +26,12 @@ import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PhotonLLCommand;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.ShooterButtonCmd;
+import frc.robot.commands.Mecanismos.setPivotVelocity;
 import frc.robot.commands.hybrid.autos;
 import frc.robot.commands.hybrid.subroutines;
 import frc.robot.commands.swerve.autoAlign;
 import frc.robot.commands.swerve.swerveDriveComando;
+import frc.robot.commands.swerve.swervePrecisionCommand;
 import frc.robot.subsystems.Mecanismos.ClimberSubsystem;
 import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
@@ -38,7 +41,7 @@ import frc.robot.subsystems.vision.PhotonLL;
 
 public class RobotContainer {
 
-    private swerveSusbsystem swerveSubsystem;
+    private swerveSusbsystem swerve;
     private PhotonLL photoncamera;
     private Pivoteo arm;
     private ClimberSubsystem climber;
@@ -53,7 +56,7 @@ public class RobotContainer {
 
         
         
-        swerveSubsystem = swerveSusbsystem.getInstance();
+        swerve = swerveSusbsystem.getInstance();
         photoncamera = PhotonLL.getInstance();
         arm = Pivoteo.getInstance();
         climber = ClimberSubsystem.getInstance();
@@ -74,8 +77,8 @@ public class RobotContainer {
                 ));
 
         */
-        swerveSubsystem.setDefaultCommand(new swerveDriveComando(
-                    swerveSubsystem,
+        swerve.setDefaultCommand(new swerveDriveComando(
+                    swerve,
                     () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
                     () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
                     () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverRotAxis),
@@ -133,10 +136,12 @@ public class RobotContainer {
        // SHOOTING POSITIONS:
        // --> SUBWOOFER <----
        //new JoystickButton(placerJoystick, 10).whileTrue(new PivoteoCommand(0.061)); // 35°
+
        // --> ROBOT STARTING ZONE <---
        //new JoystickButton(placerJoystick, 1).whileTrue(new PivoteoCommand(0.0820)); // x
-       // TRAP
-       //new JoystickButton(placerJoystick,10).whileTrue(new PivoteoCommand(0.122)); // 44°
+
+       // TRAP 1:
+       new JoystickButton(placerJoystick,4).whileTrue(new PivoteoCommand(0.122)); // 44°
 
        // MECHANISMS
         //new JoystickButton(placerJoystick,9).whileTrue(new PivoteoCommand(0.075)); // 44°
@@ -146,33 +151,61 @@ public class RobotContainer {
          
        // PS4 JOYSTICKS
 
-        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075)); // 44°
+       new JoystickButton(driverJoytick, 5).whileFalse(
+        new swervePrecisionCommand(swerve, 
+        () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverRotAxis),
+                    () -> driverJoytick.getRawButton(PS4OIConstants.kDriverFieldOrientedButtonIdx),
+                    true)
+       );
 
-        new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.40)); // 
+       new JoystickButton(driverJoytick, 6).whileFalse(
+        new swerveDriveComando(swerve, 
+        () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverYAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverXAxis),
+                    () -> -driverJoytick.getRawAxis(PS4OIConstants.kDriverRotAxis),
+                    () -> driverJoytick.getRawButton(PS4OIConstants.kDriverFieldOrientedButtonIdx),
+                    true)
+       );
+
+        // SHOOT:
+        new JoystickButton(placerJoystick,11).whileTrue(new PivoteoCommand(0.075));// 44°
+
+        // TRAP #2
+        new JoystickButton(placerJoystick,5).whileTrue(new PivoteoCommand(0.061)); // 35°
+
+        // PIVOTEO CLIMBER:
+        //new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // home position
+        new JoystickButton(placerJoystick,12).whileFalse(new PivoteoCommand(0.51)); // 90 grados
+
+       
         // NOTE MECHANISMS:
-        new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
+        //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75));
         new JoystickButton(placerJoystick, 6).whileTrue(subroutines.shootWithDelay());
         // recoger
-        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));
+        new JoystickButton(placerJoystick, 2).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
         // escupir
         new JoystickButton(placerJoystick, 3).whileTrue(new IntakeButtonCmd(0.5));
 
         // climber:
         new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
-
-    
-
-
-
+        
         // BAJAR BRAZO
-        /* 
         new JoystickButton(placerJoystick,1).whileTrue(new SequentialCommandGroup(
             new PivoteoCommand(0.26),
             new PivoteoCommand(0.061)
         )); // 44°
-        */
+        
 
+         new JoystickButton(driverJoytick, 4).whileFalse(
+            new InstantCommand(
+                () -> swerve.resetHeading()
+            )
+        );
 
+        // Tiro al AMP
+        new JoystickButton(placerJoystick, 13).whileTrue(subroutines.shootToAmp());
 
 
         

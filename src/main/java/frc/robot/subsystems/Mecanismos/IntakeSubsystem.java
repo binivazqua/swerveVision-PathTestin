@@ -10,8 +10,12 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -36,6 +40,10 @@ public class IntakeSubsystem extends SubsystemBase {
   private Color detectedColor;
   private int proximity;
 
+  DigitalInput sensorIR_1;
+  DigitalInput sensorIR_2;
+
+
   public IntakeSubsystem() {
     /** Initialization for the motor */
     motorIntake = new CANSparkMax(IntakeConstants.kMotorID, MotorType.kBrushless);
@@ -53,6 +61,10 @@ public class IntakeSubsystem extends SubsystemBase {
     /** Initialization for the relative encoder */
     encoderIntake = motorIntake.getEncoder();
     resetEncoder();
+    
+    sensorIR_1 = new DigitalInput(IntakeConstants.kIRSensor1ID);
+    sensorIR_2 = new DigitalInput(IntakeConstants.kIRSensor2ID);
+
   }
 
   /** Crea las funciones para las distintas cosas que puede hacer tu sistema **/
@@ -60,9 +72,6 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake.set(speed);
   }
 
-  public int getProximity() {
-    return m_colorSensor.getProximity();
-  }
   public double getEncoder(){
     return encoderIntake.getPosition();
   }
@@ -75,8 +84,8 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake.set(0);
   }
 
-  public void encenderLeds(){
-    pdh.setSwitchableChannel(detectedNote());
+  public int getProximity() {
+    return m_colorSensor.getProximity();
   }
 
   public boolean noteColorDetected(){
@@ -111,9 +120,6 @@ public class IntakeSubsystem extends SubsystemBase {
   public boolean detectedNote(){
     
     return noteInRange();
-    
-    
-
   }
 
   public boolean noteInRange(){
@@ -127,12 +133,24 @@ public class IntakeSubsystem extends SubsystemBase {
 
   }
 
+  public boolean getSensorInfrarrojo(){
+    if(!sensorIR_1.get() == true || !sensorIR_2.get() == true)
+      return true;
+    else
+      return false;
+  }
+  
+  public void encenderLeds(){
+    pdh.setSwitchableChannel(getSensorInfrarrojo());
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
 
     detectedColor = m_colorSensor.getColor();
 
+    encenderLeds();
     // INTAKE INFO
 
     SmartDashboard.putNumber("Encoder Intake", getEncoder());
@@ -158,6 +176,9 @@ public class IntakeSubsystem extends SubsystemBase {
     // INTEGER COLORS:
     SmartDashboard.putString("HEX STRING: ", detectedColor.toHexString());
     SmartDashboard.putString("COLOR STRING: ", detectedColor.toString());
+
+    SmartDashboard.putBoolean("Sensor IR 1", !sensorIR_1.get());
+    SmartDashboard.putBoolean("Sensor IR 2", !sensorIR_2.get());
 
   }
 

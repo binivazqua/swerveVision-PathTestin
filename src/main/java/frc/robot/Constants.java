@@ -293,6 +293,9 @@ public final class Constants {
         public static final boolean kMotorInverted = false;
         public static final IdleMode kMotorIdleMode = IdleMode.kBrake;
         
+        public static final int kIRSensor1ID = 3;
+        public static final int kIRSensor2ID = 0;
+        
     }
 
     public static final class ShooterConstants {
@@ -318,7 +321,7 @@ public final class Constants {
         public static final int kDriverRotAxis = 4;
         public static final int kDriverFieldOrientedButtonIdx = 1;
 
-        public static final double kDeadband = 0.07;
+        public static final double kDeadband = 0.08;
     }
 
     
