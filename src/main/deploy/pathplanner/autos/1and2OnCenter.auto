@@ -20,13 +20,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "subwoofer-center-shoot"
+            "pathName": "2ToCenter"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "center-intake"
+            "pathName": "centerTo2"
           }
         },
         {
@@ -51,13 +51,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "subwoofer-intake-podium"
+            "pathName": "centerTo1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "podium-to-subwoofer"
+            "pathName": "1ToCenter"
           }
         },
         {
