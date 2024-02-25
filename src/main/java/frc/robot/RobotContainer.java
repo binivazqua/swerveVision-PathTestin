@@ -192,10 +192,11 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
         
         // escupir
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.5));
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.7));
 
         // climber:
         new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
+
 
          //================================== APRIL TAG: ==============================================//
        //new JoystickButton(driverJoytick, 5).whileTrue(new autoAlign());

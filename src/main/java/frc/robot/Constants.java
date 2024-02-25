@@ -102,7 +102,7 @@ public final class Constants {
                   
             public static int driveMotorID = 1;
             public static int turningMotorID = 2;
-            public static boolean driveMotorInverted = true;
+            public static boolean driveMotorInverted = false; // taba chueco
             public static boolean turningMotorInverted = true;
             public static double absoluteEncoderOffsetRad = 0;
             public static boolean absoluteEncoderReversed = false;
