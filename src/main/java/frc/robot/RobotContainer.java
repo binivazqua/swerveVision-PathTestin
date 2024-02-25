@@ -101,9 +101,11 @@ public class RobotContainer {
             new ShooterButtonCmd(0)//
         );
 
+        /* 
         climber.setDefaultCommand(
             new ClimbCommand(false)
         );
+        */
 
         
 
@@ -154,6 +156,11 @@ public class RobotContainer {
         // ALIGN TO APRILTAG:
         new JoystickButton(driverJoytick, Constants.PS4OIConstants.square).whileTrue(new autoAlign(aprilTag.constraints));
 
+        new JoystickButton(driverJoytick, 7).whileTrue(new ClimbCommand(true));
+        new JoystickButton(driverJoytick, 8).whileTrue(new ClimbCommand(false));
+
+
+
 
        // =============================== ÁNGULOS PIVOTEO ==================================== //
         
@@ -173,7 +180,7 @@ public class RobotContainer {
        new JoystickButton(placerJoystick,Constants.PS4OIConstants.triangle).whileTrue(new PivoteoCommand(0.122)); // 44°
 
         // ÁNGULO CLIMBER:
-        //new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
+        new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
         new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileFalse(new PivoteoCommand(0.51)); // 90 grados (empujón)
 
         
@@ -195,7 +202,6 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.7));
 
         // climber:
-        new POVButton(placerJoystick, 90).whileTrue(new ClimbCommand(true));
 
 
          //================================== APRIL TAG: ==============================================//

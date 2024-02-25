@@ -94,10 +94,10 @@ public class swervePrecisionCommand extends Command {
 
          // 3. Make the driving smoother
          // CHANGE VELOCITY @RAMOS//
-        driveVel = xLimiter.calculate(driveVel) * 5;
-        strafeVel = yLimiter.calculate(strafeVel) * 5;
+        driveVel = xLimiter.calculate(driveVel) * 3;
+        strafeVel = yLimiter.calculate(strafeVel) * 3;
         rotationVel = giroLimiter.calculate(rotationVel)
-                * 7;
+                * 5;
 
                 SmartDashboard.putNumber("drive velocity", driveVel);
                 SmartDashboard.putNumber("strafe velocity", strafeVel);
