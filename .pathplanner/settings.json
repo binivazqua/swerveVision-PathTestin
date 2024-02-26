@@ -3,11 +3,9 @@
   "robotLength": 0.79,
   "holonomicMode": true,
   "pathFolders": [
-    "Blue-unique-paths",
-    "transitions",
-    "Upchuck",
-    "clase",
+    "blue-armando",
     "miercoles-de-plaza",
+    "transitions",
     "translations"
   ],
   "autoFolders": [

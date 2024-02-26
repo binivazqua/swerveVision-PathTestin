@@ -102,7 +102,7 @@ public class RobotContainer {
             new ShooterButtonCmd(0)//
         );
 
-        /* 
+        /* comented to set deffault as "under the chain"
         climber.setDefaultCommand(
             new ClimbCommand(false)
         );

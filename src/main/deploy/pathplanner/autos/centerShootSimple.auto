@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.27,
-      "y": 5.57
+      "x": 1.23,
+      "y": 5.5
     },
     "rotation": 180.0
   },
@@ -12,9 +12,40 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "lowArmAndShoot"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "2ToCenter"
+            "pathName": "subwoofer-center-shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "center-intake"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootWithDelay"
+                }
+              }
+            ]
           }
         }
       ]
