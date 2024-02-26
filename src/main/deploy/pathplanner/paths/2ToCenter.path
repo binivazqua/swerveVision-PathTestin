@@ -89,11 +89,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.96460319371604,
+    "rotation": 0.6696809220390446,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue-unique-paths",
+  "folder": null,
   "previewStartingState": null,
   "useDefaultConstraints": false
 }
