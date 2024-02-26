@@ -210,6 +210,11 @@ public class RobotContainer {
         // escupir
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.7));
 
+        new JoystickButton(driverJoytick, 4).whileFalse(
+            new InstantCommand(
+                () -> swerve.resetHeading()
+            )
+        );
         // climber:
 
 

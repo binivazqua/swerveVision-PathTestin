@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.5
+        "x": 1.2651860724115016,
+        "y": 5.57
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0066524243363597,
-        "y": 5.5
+        "x": 1.2798717547345655,
+        "y": 5.57
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.2,
-        "y": 7.0
+        "x": 2.6,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 1.4216588368778627,
-        "y": 7.058742729290902
+        "x": 2.5926571588384673,
+        "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,25 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "intake",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "intakeCommand"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "intakeShoot",
-      "waypointRelativePos": 1.0,
+      "name": "intakeaNota",
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -62,25 +45,51 @@
               }
             },
             {
+              "type": "wait",
+              "data": {
+                "waitTime": 1.0
+              }
+            },
+            {
               "type": "named",
               "data": {
-                "name": "shootCommand"
+                "name": "shooterCommand"
               }
             }
           ]
         }
       }
+    },
+    {
+      "name": "intakeaNota2",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "shooteaNota",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.99999999982956,
+    "rotation": -178.96460319371604,
     "rotateFast": false
   },
   "reversed": false,
