@@ -183,9 +183,14 @@ public class RobotContainer {
         // ÁNGULO TRAP/ SHOOTEAR DE LEJOS:
        new JoystickButton(placerJoystick,Constants.PS4OIConstants.triangle).whileTrue(new PivoteoCommand(0.122)); // 44°
 
+        // UNDER THE CHAIN:
+        new JoystickButton(placerJoystick,8).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
+
         // ÁNGULO CLIMBER:
-        new JoystickButton(placerJoystick,12).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
-        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileFalse(new PivoteoCommand(0.51)); // 90 grados (empujón)
+        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileTrue(new PivoteoCommand(0.51)); // 90 grados (empujón)
+
+        // UNDER THE CHAIN:
+
 
         
         // Tiro al AMP (Boton de PS)

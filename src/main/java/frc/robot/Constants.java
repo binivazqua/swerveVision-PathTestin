@@ -306,7 +306,7 @@ public final class Constants {
         public static final boolean kRightMotorInverted = true;
         public static final boolean kLeftMotorInverted = true;
 
-        public static final IdleMode kMotorsIdleMode = IdleMode.kBrake;
+        public static final IdleMode kMotorsIdleMode = IdleMode.kCoast;
 
     }
 
