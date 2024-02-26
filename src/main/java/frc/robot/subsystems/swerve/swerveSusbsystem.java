@@ -100,16 +100,6 @@ public class swerveSusbsystem extends SubsystemBase {
                 }, 
                 this);
 
-        String aprilTagFields = AprilTagFields.k2023ChargedUp.m_resourceFile;
-
-        try {
-        aprilTagFieldLayout = AprilTagFieldLayout.loadFromResource(aprilTagFields);
-            
-        } catch (Exception e) {
-            System.out.println("fILE NOT FOUND");
-        }
-
-        aprilTagFieldLayout.getTagPose(1);
 
        //Reset odometry when initianig the subsyste
         odometry.resetPosition(
@@ -270,7 +260,6 @@ public class swerveSusbsystem extends SubsystemBase {
         SmartDashboard.putData("Field", field);
 
         //Debug info of the odometry
-        System.out.println(odometry.getPoseMeters());
          
 }
     
