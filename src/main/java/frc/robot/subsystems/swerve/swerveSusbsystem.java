@@ -147,7 +147,7 @@ public class swerveSusbsystem extends SubsystemBase {
     * @return the heading of the robot
     */
     public double getHeading() {
-        return Math.IEEEremainder(-gyro.getAngle(), 360)-180;
+        return Math.IEEEremainder(-gyro.getAngle(), 360);
     }
 
     /** Returns the module states (turn angles and drive velocities) for all of the modules. */

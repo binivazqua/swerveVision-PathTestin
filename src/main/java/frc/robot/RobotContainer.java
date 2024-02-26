@@ -159,7 +159,11 @@ public class RobotContainer {
         new JoystickButton(driverJoytick, 7).whileTrue(new ClimbCommand(true));
         new JoystickButton(driverJoytick, 8).whileTrue(new ClimbCommand(false));
 
-
+        new JoystickButton(driverJoytick, 4).whileFalse(
+            new InstantCommand(
+                () -> swerve.resetHeading()
+            )
+        );
 
 
        // =============================== ÁNGULOS PIVOTEO ==================================== //
@@ -227,7 +231,8 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
        
-       return autos.test_papaya();
+       //return autos.test_papaya();
+       return null;
 
     }
 

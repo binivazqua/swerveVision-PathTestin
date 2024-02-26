@@ -293,7 +293,7 @@ public final class Constants {
         public static final boolean kMotorInverted = false;
         public static final IdleMode kMotorIdleMode = IdleMode.kBrake;
         
-        public static final int kIRSensor1ID = 3;
+        public static final int kIRSensor1ID = 1;
         public static final int kIRSensor2ID = 0;
         
     }
