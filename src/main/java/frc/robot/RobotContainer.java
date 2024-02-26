@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.PS4OIConstants;
 import frc.robot.Constants.limelightConstants.aprilTag;
+import frc.robot.Constants.limelightConstants.trapAprilTag;
 import frc.robot.commands.Mecanismos.ArmVelocityCommand;
 import frc.robot.commands.Mecanismos.ClimbCommand;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
@@ -154,7 +155,7 @@ public class RobotContainer {
         );
 
         // ALIGN TO APRILTAG:
-        new JoystickButton(driverJoytick, Constants.PS4OIConstants.square).whileTrue(new autoAlign(aprilTag.constraints));
+        new JoystickButton(driverJoytick, Constants.PS4OIConstants.square).whileTrue(new autoAlign(trapAprilTag.constraints));
 
         new JoystickButton(driverJoytick, 7).whileTrue(new ClimbCommand(true));
         new JoystickButton(driverJoytick, 8).whileTrue(new ClimbCommand(false));
@@ -164,6 +165,8 @@ public class RobotContainer {
                 () -> swerve.resetHeading()
             )
         );
+
+        new JoystickButton(driverJoytick, Constants.PS4OIConstants.PSButton).whileTrue(subroutines.shootWithDelayLejos());
 
 
        // =============================== ÁNGULOS PIVOTEO ==================================== //
@@ -175,13 +178,24 @@ public class RobotContainer {
         )); // 44°
        
         // ÁNGULO SHOOT:
-        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickIzq).whileTrue(new PivoteoCommand(0.075));// 44°
+        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickIzq).whileTrue(new PivoteoCommand(0.075));// 30°
 
-        // ÁNGULO TRAP/SHOOTEAR DE LEJOS
-        new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickDer).whileTrue(new PivoteoCommand(0.061)); // 35°
+        // NO SE SABE
+        //new JoystickButton(placerJoystick,Constants.PS4OIConstants.topLeft).whileTrue(new PivoteoCommand(0.061)); //0.35
+        //new JoystickButton(placerJoystick,Constants.PS4OIConstants.topLeft).whileTrue(new PivoteoCommand(0.095)); // 35°
 
-        // ÁNGULO TRAP/ SHOOTEAR DE LEJOS:
-       new JoystickButton(placerJoystick,Constants.PS4OIConstants.triangle).whileTrue(new PivoteoCommand(0.122)); // 44°
+        // TIRAR DE LEJOS:
+        //new JoystickButton(placerJoystick, Constants.PS4OIConstants.PSButton).whileTrue(new PivoteoCommand(0.1375)); // ir tantito p atrás
+
+        //86 PULGADAS A 60 GRADOS //////// SI SIRVE /// TIRA DESDE LA NOTA DE ENMEDIO
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.PSButton).whileTrue(new PivoteoCommand(0.1444)); // ir tantito p atrás
+
+
+
+
+
+        // ÁNGULO TRAP:
+       new JoystickButton(placerJoystick,Constants.PS4OIConstants.topLeft).whileTrue(new PivoteoCommand(0.122)); // 40° a 32.5in del trap encoder: 0.154
 
         // UNDER THE CHAIN:
         new JoystickButton(placerJoystick,8).whileTrue(new PivoteoCommand(0.43)); // ir tantito p atrás
@@ -194,7 +208,7 @@ public class RobotContainer {
 
         
         // Tiro al AMP (Boton de PS)
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.PSButton).whileTrue(subroutines.shootToAmp()); 
+        //new JoystickButton(placerJoystick, Constants.PS4OIConstants.PSButton).whileTrue(subroutines.shootToAmp()); 
 
        // =============================== NOTE SCORING ====================================== //
 
@@ -202,7 +216,7 @@ public class RobotContainer {
         //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75)); // 
 
         // SHOOT
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.topRight).whileTrue(subroutines.shootWithDelay());
+        //new JoystickButton(placerJoystick, Constants.PS4OIConstants.topRight).whileTrue(subroutines.shootWithDelay());
 
         // recoger
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true

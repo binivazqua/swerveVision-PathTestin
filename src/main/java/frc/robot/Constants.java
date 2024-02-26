@@ -181,6 +181,46 @@ public final class Constants {
     /**
      * PID constants for the autoalign
      */
+
+     public static final class trapAprilTag{
+
+            public static final double kPdrive = 2;
+            public static final double kIdrive = 0;
+            public static final double kDdrive = 0;
+
+            public static final double kPstrafe = 0.1;
+            public static final double kIstrafe = 0;
+            public static final double kDstrafe = 0;
+
+            public static final double kProtation = 0.06;
+            public static final double kIrotation = 0;
+            public static final double kDrotation = 0;
+
+            public static final TrapezoidProfile.Constraints driveConstraints = 
+                new TrapezoidProfile.Constraints(9,9);
+
+            
+            public static final TrapezoidProfile.Constraints strafeConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+
+            
+            public static final TrapezoidProfile.Constraints rotationConstraints = 
+                new TrapezoidProfile.Constraints(3,2);
+            
+            public static double driveOffset = 0.98;
+            public static double strafeOffset = 1.42;
+            public static double rotationOffset = 1.5;
+            
+            public static ProfiledPIDController drivePID = new ProfiledPIDController(kPdrive, kIdrive, kDdrive, driveConstraints);
+            public static ProfiledPIDController strafePID = new ProfiledPIDController(kPstrafe, kIstrafe, kDstrafe, strafeConstraints);
+            public static ProfiledPIDController rotationPID = new ProfiledPIDController(kProtation, kIrotation, kDrotation, rotationConstraints);
+
+
+
+            public static final alignConstraints constraints =  
+        new alignConstraints(driveOffset, strafeOffset, rotationOffset, drivePID, strafePID, rotationPID);
+
+        }
      
 
         public static final class aprilTag{
@@ -306,7 +346,7 @@ public final class Constants {
         public static final boolean kRightMotorInverted = true;
         public static final boolean kLeftMotorInverted = true;
 
-        public static final IdleMode kMotorsIdleMode = IdleMode.kCoast;
+        public static final IdleMode kMotorsIdleMode = IdleMode.kBrake;
 
     }
 

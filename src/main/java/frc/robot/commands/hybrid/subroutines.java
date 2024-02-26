@@ -33,6 +33,17 @@ public class subroutines {
     
     }
 
+    
+    public static Command shootWithDelayLejos() {
+        return new SequentialCommandGroup(
+            new ShooterButtonCmd(0.85).withTimeout(1.3), // DELAY CHANGED FROM 1s to 0.8s
+            new ParallelCommandGroup(
+                new ShooterButtonCmd(0.7),
+                new IntakeButtonCmd(-0.5))
+                ).withTimeout(2);
+    
+    }
+
     public static Command shootToAmp() {
         return new ParallelCommandGroup(
                 new ShooterButtonCmd(0.225),
