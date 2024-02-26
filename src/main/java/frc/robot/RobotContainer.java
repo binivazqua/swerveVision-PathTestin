@@ -211,7 +211,7 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5, true));// ********true
         
         // escupir
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.7));
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.5, true));
 
         new JoystickButton(driverJoytick, 4).whileFalse(
             new InstantCommand(
@@ -258,8 +258,8 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
        
-       //return autos.test_papaya();
-       return null;
+       return autos.test_papaya();
+       //return null;
 
     }
 

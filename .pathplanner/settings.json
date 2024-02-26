@@ -9,12 +9,7 @@
     "translations"
   ],
   "autoFolders": [
-    "Blue-complex",
-    "Blue-center",
-    "Blue-left",
-    "Left-center",
-    "Blue-right",
-    "Upchuck"
+    "autos-finales"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
