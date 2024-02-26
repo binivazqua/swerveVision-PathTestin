@@ -378,6 +378,9 @@ public final class Constants {
         public static final int topLeft = 5;
         public static final int topRight = 6;
         public static final int PSButton = 13;
+        public static final int triggerRight = 8;
+
+
 
 
 
