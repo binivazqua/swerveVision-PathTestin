@@ -49,7 +49,57 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": null
+                  "pathName": "centerTo1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1ToCenter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootWithDelay"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo2"
                 }
               }
             ]
@@ -99,7 +149,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo1"
+                  "pathName": "centerTo3"
                 }
               }
             ]
@@ -108,7 +158,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "1ToCenter"
+            "pathName": "3ToCenter"
           }
         },
         {

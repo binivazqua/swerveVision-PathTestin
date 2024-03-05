@@ -87,7 +87,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "lowPivotToIntake"
+                  "name": "lowPivotToGround"
                 }
               },
               {
@@ -99,7 +99,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo1"
+                  "pathName": "centerTo3"
                 }
               }
             ]
@@ -108,26 +108,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "1ToCenter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "aimAtSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootWithDelay"
-                }
-              }
-            ]
+            "pathName": "3ToCenter"
           }
         }
       ]

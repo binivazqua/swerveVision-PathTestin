@@ -12,15 +12,47 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "lowArmAndShoot"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootWithDelay"
+                }
+              }
+            ]
           }
         },
         {
-          "type": "path",
+          "type": "race",
           "data": {
-            "pathName": "centerTo1"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToGround"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo1"
+                }
+              }
+            ]
           }
         },
         {
@@ -49,9 +81,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "race",
           "data": {
-            "pathName": "centerTo2"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": null
+                }
+              }
+            ]
           }
         },
         {
@@ -80,9 +131,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "race",
           "data": {
-            "pathName": "centerTo3"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo3"
+                }
+              }
+            ]
           }
         },
         {

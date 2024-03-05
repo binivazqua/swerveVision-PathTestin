@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 2.622104793438532,
-        "y": 6.7680439038220905
+        "x": 2.922725031200699,
+        "y": 6.935079926139497
       },
       "prevControl": {
-        "x": 1.622104793438532,
-        "y": 6.7680439038220905
+        "x": 1.9227250312006992,
+        "y": 6.935079926139497
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,31 +30,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "intake",
-      "waypointRelativePos": 0.35,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "lowPivotToGround"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "intakeNote"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

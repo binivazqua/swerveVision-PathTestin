@@ -67,11 +67,11 @@ public class Robot extends TimedRobot {
         NamedCommands.registerCommand("ShootWithDelay", subroutines.shootWithDelay());
         NamedCommands.registerCommand("lowArm", subroutines.lowArm());
         NamedCommands.registerCommand("lowArmAndShoot", subroutines.lowArmAndShoot());
-        NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.3, false));
+        NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.4, false));
         NamedCommands.registerCommand("takeOutNote", new IntakeButtonCmd(0.7).withTimeout(3));
         NamedCommands.registerCommand("aimAtSubwoofer", new PivoteoCommand(0.14).withTimeout(2));
         NamedCommands.registerCommand("lowPivotToGround", new setPivotVelocity(0).withTimeout(0.3));
-        NamedCommands.registerCommand("lowPivotToIntake", new PivoteoCommand(0.02));
+        NamedCommands.registerCommand("lowPivotToIntake", new PivoteoCommand(0.03));
 
 
         addPeriodic(() -> CommandScheduler.getInstance().run(), 0.01);

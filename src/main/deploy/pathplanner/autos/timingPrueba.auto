@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2651860724115016,
-      "y": 5.57
+      "x": 1.23,
+      "y": 5.5
     },
     "rotation": 180.0
   },
@@ -18,7 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intakeNote"
+                  "name": "lowPivotToGround"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
                 }
               },
               {
@@ -29,10 +35,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2ToCenter"
+          }
         }
       ]
     }
   },
-  "folder": "autos-prueba",
+  "folder": null,
   "choreoAuto": false
 }

@@ -85,7 +85,7 @@ public class swerveSusbsystem extends SubsystemBase {
 
             new HolonomicPathFollowerConfig(
                 new PIDConstants(20, 0, 0.01),
-                new PIDConstants(6.5, 0, 0), 
+                new PIDConstants(6, 0, 0), // kP changed from 8 to 6 (04/03)
                 3.5, 
                 DriveConstants.DRIVE_BASE_RADIUS, 
                 new ReplanningConfig()), 
@@ -94,7 +94,7 @@ public class swerveSusbsystem extends SubsystemBase {
                     var alliance = DriverStation.getAlliance();
 
                     if (alliance.isPresent()) {
-                        return alliance.get() == DriverStation.Alliance.Red;
+                        return alliance.get() == DriverStation.Alliance.Blue;
                     }
                     return false;
                 }, 

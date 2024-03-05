@@ -16,25 +16,19 @@
     },
     {
       "anchor": {
-        "x": 2.5902327860993752,
-        "y": 4.2058191158635845
+        "x": 2.9122806337215734,
+        "y": 4.209092184087677
       },
       "prevControl": {
-        "x": 1.7851840315743863,
-        "y": 4.884704952006758
+        "x": 2.018336848061597,
+        "y": 3.963444415619555
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 128.63678992206525,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
