@@ -208,12 +208,15 @@ public class RobotContainer {
         new JoystickButton(placerJoystick, PS4OIConstants.joystickDer).whileTrue(new PivoteoCommand(0.21));
 */
 
-  //////////////////////////////// SUBIDA CHOLA
         // --> APUNTAR <--
        // new JoystickButton(placerJoystick, PS4OIConstants.joystickIzq).whileTrue(new ArmVelocityCommand(0.15));
 
         new JoystickButton(placerJoystick, PS4OIConstants.joystickIzq).whileTrue(new PivoteoCommand(0.15));
 
+
+
+  //////////////////////////////// SUBIDA CHOLA
+  /* 
         // --> FIJAR <--
         new JoystickButton(placerJoystick, PS4OIConstants.topLeft).whileTrue(new ArmVelocityCommand(0.075));
 
@@ -222,7 +225,7 @@ public class RobotContainer {
 
         // --> ESCALAR <--
         new JoystickButton(placerJoystick, PS4OIConstants.joystickDer).whileTrue(new ArmVelocityCommand(0.3));
-
+*/
 
         // ÁNGULO SHOOT:
        //new JoystickButton(placerJoystick,Constants.PS4OIConstants.joystickIzq).whileTrue(new PivoteoCommand( 0.075));// 30° // 0.19 //0.075
@@ -276,7 +279,15 @@ public class RobotContainer {
         //new JoystickButton(placerJoystick, PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5));
         
         // escupir
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.3));
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.35));
+
+       /*
+       pruebas amp
+       new JoystickButton(placerJoystick, PS4OIConstants.triggerLeftBtn).whileTrue(new IntakeButtonCmd(0.5));
+        new JoystickButton(placerJoystick, PS4OIConstants.shareBtn).whileTrue(new IntakeButtonCmd(0.6));
+        new JoystickButton(placerJoystick, PS4OIConstants.optionsBtn).whileTrue(new IntakeButtonCmd(0.7));
+        */
+        
 
         new JoystickButton(driverJoytick, 4).whileFalse(
             new InstantCommand(

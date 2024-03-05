@@ -366,19 +366,29 @@ public final class Constants {
 
     
     public static final class PS4OIConstants {
-        
-        public static final int kDriverYAxis = 1;
+       
         public static final int kDriverXAxis = 0;
-        public static final int triangle = 4;
+        public static final int kDriverYAxis = 1;
+       
+
+        public static final int square = 1;
         public static final int cross = 2;
         public static final int circle = 3;
-        public static final int square = 1;
-        public static final int joystickIzq = 11;
-        public static final int joystickDer = 12;
+        public static final int triangle = 4;        
         public static final int topLeft = 5;
         public static final int topRight = 6;
-        public static final int PSButton = 13;
+
         public static final int triggerRight = 8;
+
+        public static final int triggerLeftBtn = 7;
+        public static final int shareBtn = 9;
+        public static final int optionsBtn = 10;
+        
+        
+        public static final int joystickIzq = 11;
+        public static final int joystickDer = 12;
+
+        public static final int PSButton = 13;
         public static final int pad = 14;
 
 
