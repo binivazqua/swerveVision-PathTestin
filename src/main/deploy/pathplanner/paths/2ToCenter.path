@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2651860724115016,
-        "y": 5.57
+        "x": 2.6,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2798717547345655,
-        "y": 5.57
+        "x": 1.9096184757255017,
+        "y": 5.514641868978395
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6,
-        "y": 5.55
+        "x": 1.23,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 2.5926571588384673,
-        "y": 5.55
+        "x": 1.8051745009342444,
+        "y": 5.545975061415772
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,70 +30,23 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "intakeaNota",
-      "waypointRelativePos": 0.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "intakeCommand"
-              }
-            },
-            {
-              "type": "wait",
-              "data": {
-                "waitTime": 1.0
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "shooterCommand"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "intakeaNota2",
-      "waypointRelativePos": 1.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    },
-    {
-      "name": "shooteaNota",
-      "waypointRelativePos": 1.0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 5.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.6696809220390446,
+    "rotation": 178.64639175502887,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "blue-armando",
-  "previewStartingState": null,
-  "useDefaultConstraints": false
+  "previewStartingState": {
+    "rotation": -178.10512544240794,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
 }

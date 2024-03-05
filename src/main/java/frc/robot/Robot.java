@@ -14,12 +14,14 @@ import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.setPivotVelocity;
 import frc.robot.commands.hybrid.subroutines;
+import frc.robot.subsystems.Mecanismos.Pivoteo;
 import frc.robot.subsystems.swerve.swerveSusbsystem;
 
 /**
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot {
 
     private RobotContainer m_robotContainer;
     swerveSusbsystem swerve;
+    Pivoteo arm = Pivoteo.getInstance();
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -64,9 +67,11 @@ public class Robot extends TimedRobot {
         NamedCommands.registerCommand("ShootWithDelay", subroutines.shootWithDelay());
         NamedCommands.registerCommand("lowArm", subroutines.lowArm());
         NamedCommands.registerCommand("lowArmAndShoot", subroutines.lowArmAndShoot());
-        NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.5, true));
-        NamedCommands.registerCommand("aimAtSubwoofer", new PivoteoCommand(0.061).withTimeout(2));
-        NamedCommands.registerCommand("lowPivotToGround", new setPivotVelocity(0));
+        NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.3, false));
+        NamedCommands.registerCommand("takeOutNote", new IntakeButtonCmd(0.7).withTimeout(3));
+        NamedCommands.registerCommand("aimAtSubwoofer", new PivoteoCommand(0.14).withTimeout(2));
+        NamedCommands.registerCommand("lowPivotToGround", new setPivotVelocity(0).withTimeout(0.3));
+        NamedCommands.registerCommand("lowPivotToIntake", new PivoteoCommand(0.02));
 
 
         addPeriodic(() -> CommandScheduler.getInstance().run(), 0.01);
@@ -87,6 +92,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
+
         // Runs the Scheduler. This is responsible for polling buttons, adding
         // newly-scheduled
         // commands, running already-scheduled commands, removing finished or

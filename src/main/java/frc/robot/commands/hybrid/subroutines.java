@@ -25,11 +25,11 @@ public class subroutines {
 
      public static Command shootWithDelay() {
         return new SequentialCommandGroup(
-            new ShooterButtonCmd(0.7).withTimeout(0.95), // DELAY CHANGED FROM 1s to 0.8s
+            new ShooterButtonCmd(0.9).withTimeout(1.3), // DELAY CHANGED FROM 1s to 0.8s
             new ParallelCommandGroup(
-                new ShooterButtonCmd(0.7),
+                new ShooterButtonCmd(0.9),
                 new IntakeButtonCmd(-0.5))
-                ).withTimeout(2);
+                ).withTimeout(2); // 2 seg
     
     }
 
@@ -38,7 +38,7 @@ public class subroutines {
         return new SequentialCommandGroup(
             new ShooterButtonCmd(0.85).withTimeout(1.3), // DELAY CHANGED FROM 1s to 0.8s
             new ParallelCommandGroup(
-                new ShooterButtonCmd(0.7),
+                new ShooterButtonCmd(0.85),
                 new IntakeButtonCmd(-0.5))
                 ).withTimeout(2);
     
@@ -55,19 +55,24 @@ public class subroutines {
     public static Command lowArm() {
         return new SequentialCommandGroup(
             new PivoteoCommand(0.26),
-            new PivoteoCommand(0.061)
-        );     
+            new PivoteoCommand(0.15)
+        ).withTimeout(5);     
     }
 
     public static Command lowArmAndShoot() {
         return new SequentialCommandGroup(
-            new PivoteoCommand(0.26),
             new ParallelCommandGroup(
-                new PivoteoCommand(0.061),
+            new PivoteoCommand(0.23).withTimeout(1.3),
+            new ShooterButtonCmd(0.9).withTimeout(1.3) // DELAY CHANGED FROM 1s to 0.8s
+            ),
+            new ParallelCommandGroup(
+                new PivoteoCommand(0.14),
                 shootWithDelay()
             )
-        ).withTimeout(2.3);     
+        ).withTimeout(3);     
     }
+
+   
 
    
     /*public static Command alignAndShit(){

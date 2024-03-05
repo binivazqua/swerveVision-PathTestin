@@ -22,14 +22,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  PowerDistribution pdh = new PowerDistribution();
 
   private final CANSparkMax motorIntake;
   private final RelativeEncoder encoderIntake;
 
-  private final I2C.Port i2cPort;
+ // private final I2C.Port i2cPort;
 
-  private final ColorSensorV3 m_colorSensor;
+ // private final ColorSensorV3 m_colorSensor;
 
   private boolean detectedred;
   private boolean detectedgreen;
@@ -51,7 +50,7 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake.setInverted(IntakeConstants.kMotorInverted);
     motorIntake.setIdleMode(IntakeConstants.kMotorIdleMode);
 
-    i2cPort = I2C.Port.kOnboard;
+    /*i2cPort = I2C.Port.kOnboard;
 
     m_colorSensor = new ColorSensorV3(i2cPort);
 
@@ -83,7 +82,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public void stopMotor(){
     motorIntake.set(0);
   }
-
+/* 
   public int getProximity() {
     return m_colorSensor.getProximity();
   }
@@ -131,7 +130,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
     return inRange;
 
-  }
+  }*/
 
   public boolean getSensorInfrarrojo(){
     if(!sensorIR_1.get() == true || !sensorIR_2.get() == true)
@@ -140,43 +139,41 @@ public class IntakeSubsystem extends SubsystemBase {
       return false;
   }
   
-  public void encenderLeds(){
-    pdh.setSwitchableChannel(getSensorInfrarrojo());
-  }
+  
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
 
-    detectedColor = m_colorSensor.getColor();
+    //detectedColor = m_colorSensor.getColor();
 
-    encenderLeds();
+   
     // INTAKE INFO
 
     SmartDashboard.putNumber("Encoder Intake", getEncoder());
-    SmartDashboard.putBoolean("Note loaded?", detectedNote());
-    SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
-    SmartDashboard.putNumber("PROXIMITY:", getProximity());
-    SmartDashboard.putBoolean("IN RANGE:", noteInRange());
-    SmartDashboard.putBoolean("COLOR DETECTED?", noteColorDetected());
+    //SmartDashboard.putBoolean("Note loaded?", detectedNote());
+    //SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
+    //SmartDashboard.putNumber("PROXIMITY:", getProximity());
+    //SmartDashboard.putBoolean("IN RANGE:", noteInRange());
+    //SmartDashboard.putBoolean("COLOR DETECTED?", noteColorDetected());
 
-    // RAW COLOR:
+    /*// RAW COLOR:
     SmartDashboard.putString("Raw Color: ", m_colorSensor.getRawColor().toString());
     SmartDashboard.putNumber("Raw RED: ", m_colorSensor.getRawColor().red);
     SmartDashboard.putNumber("Raw GREEN: ", m_colorSensor.getRawColor().green);
     SmartDashboard.putNumber("Raw BLUE: ", m_colorSensor.getRawColor().blue);
-
+*/
     // INTEGER COLOR:
-    SmartDashboard.putNumber("INTEGER RED", detectedColor.red);
+    /*SmartDashboard.putNumber("INTEGER RED", detectedColor.red);
     SmartDashboard.putNumber("INTEGER GREEN", detectedColor.green);
     SmartDashboard.putNumber("INTEGER BLUE", detectedColor.blue);
-
+*/
 
 
     // INTEGER COLORS:
-    SmartDashboard.putString("HEX STRING: ", detectedColor.toHexString());
+   /*  SmartDashboard.putString("HEX STRING: ", detectedColor.toHexString());
     SmartDashboard.putString("COLOR STRING: ", detectedColor.toString());
-
+*/
     SmartDashboard.putBoolean("Sensor IR 1", !sensorIR_1.get());
     SmartDashboard.putBoolean("Sensor IR 2", !sensorIR_2.get());
 

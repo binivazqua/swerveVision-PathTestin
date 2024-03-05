@@ -94,7 +94,7 @@ public class swerveSusbsystem extends SubsystemBase {
                     var alliance = DriverStation.getAlliance();
 
                     if (alliance.isPresent()) {
-                        return alliance.get() == DriverStation.Alliance.Blue;
+                        return alliance.get() == DriverStation.Alliance.Red;
                     }
                     return false;
                 }, 
@@ -261,6 +261,26 @@ public class swerveSusbsystem extends SubsystemBase {
 
         //Debug info of the odometry
          
+}
+
+@Override
+public void simulationPeriodic() {
+  // This method will be called once per scheduler run during simulation
+
+  //Updating the odometry of the robot
+        odometry.update(getRotation2d(), 
+        new SwerveModulePosition[]{
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            rearLeft.getPosition(),
+            rearRight.getPosition()
+         });
+ 
+        //Set the robot pose in the Field2d
+        field.setRobotPose(odometry.getPoseMeters());
+
+        //Visualization of the field
+        SmartDashboard.putData("Field", field);
 }
     
     //Public method for stoping the modules

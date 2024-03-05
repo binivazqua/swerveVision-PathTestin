@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.27,
-      "y": 5.57
+      "x": 0.75,
+      "y": 4.48
     },
-    "rotation": 180.0
+    "rotation": 125.14268066388283
   },
   "command": {
     "type": "sequential",
@@ -20,13 +20,44 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2shoot-to-center"
+            "pathName": "Left-to-1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": null
+            "pathName": "1-to-left"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootWithDelay"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "left-to-2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-to-left"
           }
         },
         {

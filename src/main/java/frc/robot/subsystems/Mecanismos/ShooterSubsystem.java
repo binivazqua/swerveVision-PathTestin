@@ -19,6 +19,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   CANSparkMax motorShooterIzq;
   RelativeEncoder encoderShooterIzq;
+  
 
   public ShooterSubsystem() {
     /** Initialization for the motor */
@@ -27,12 +28,13 @@ public class ShooterSubsystem extends SubsystemBase {
     motorShooterDer.restoreFactoryDefaults();
     motorShooterDer.setInverted(ShooterConstants.kRightMotorInverted);
     motorShooterDer.setIdleMode(ShooterConstants.kMotorsIdleMode);
+    motorShooterDer.setSmartCurrentLimit(30);
     
     motorShooterIzq = new CANSparkMax(ShooterConstants.kLeftMotorID, MotorType.kBrushless);
     motorShooterIzq.restoreFactoryDefaults();
     motorShooterIzq.setInverted(ShooterConstants.kLeftMotorInverted);
     motorShooterIzq.setIdleMode(ShooterConstants.kMotorsIdleMode);
-
+    motorShooterIzq.setSmartCurrentLimit(30);
     /** Initialization for the relative encoder */
     encoderShooterDer = motorShooterDer.getEncoder();
     encoderShooterIzq = motorShooterIzq.getEncoder();
@@ -70,7 +72,7 @@ public class ShooterSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Encoder Shooter Derecho", getEncoderDer());
     SmartDashboard.putNumber("Encoder Shooter Izquierdo", getEncoderIzq());
-
+    SmartDashboard.putNumber("Shooter", motorShooterDer.getOutputCurrent());
   }
 
   private static ShooterSubsystem instance;

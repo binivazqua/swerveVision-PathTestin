@@ -12,21 +12,28 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "race",
           "data": {
-            "name": "lowArmAndShoot"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo2"
+                }
+              }
+            ]
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "2ToCenter"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "centerTo2"
           }
         },
         {
@@ -49,9 +56,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "race",
           "data": {
-            "pathName": "centerTo1"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo1"
+                }
+              }
+            ]
           }
         },
         {
@@ -82,6 +102,6 @@
       ]
     }
   },
-  "folder": "Blue-complex",
+  "folder": null,
   "choreoAuto": false
 }

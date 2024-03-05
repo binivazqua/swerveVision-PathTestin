@@ -85,14 +85,14 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
-        public static final double kMaxDriveVEL = 6.5;
-        public static final double kMaxRotVEL = 3 * 2 * Math.PI;
+        public static final double kMaxDriveVEL = 8.5;
+        public static final double kMaxRotVEL = 6 * 2 * Math.PI;
 
-        public static final double kDriveLimiter = kMaxDriveVEL / 3;
-        public static final double kRotationLimiter = //
-                kMaxRotVEL / 3;
-        public static final double kDriveAccelerationLimiter = 5;
-        public static final double kRotationAccelerationLimiter = 7;
+        //public static final double kDriveLimiter = kMaxDriveVEL / 3;
+        //public static final double kRotationLimiter = //
+              //  kMaxRotVEL / 3;
+        public static final double kDriveAccelerationLimiter = 7;
+        public static final double kRotationAccelerationLimiter = 8;
     }
 
     public static class MODS {
@@ -379,6 +379,9 @@ public final class Constants {
         public static final int topRight = 6;
         public static final int PSButton = 13;
         public static final int triggerRight = 8;
+        public static final int pad = 14;
+
+
 
 
 

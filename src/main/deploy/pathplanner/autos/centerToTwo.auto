@@ -1,0 +1,38 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.2651860724115016,
+      "y": 5.57
+    },
+    "rotation": 180.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo2"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "folder": "autos-prueba",
+  "choreoAuto": false
+}
