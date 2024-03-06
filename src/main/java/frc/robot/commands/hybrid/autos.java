@@ -35,9 +35,40 @@ public class autos {
         );
     }
 */
-    public static Command test_papaya() {
+
+    // =============================== AUTOS FINALES ======================================== //
+    public static Command fourNoteCenter() {
         return AutoBuilder.buildAuto("123OnCenterShootOnWing");
     }
+
+    public static Command fourNoteCenterReturning() {
+        return AutoBuilder.buildAuto("123OnCenter");
+    }
+
+    public static Command threeNoteCenter() {
+        return AutoBuilder.buildAuto("1and2OnCenter");
+    }
+
+    public static Command leaveAndTakeOut() {
+        return AutoBuilder.buildAuto("overture");
+    }
+
+    public static Command TwoNoteCenter() {
+        return AutoBuilder.buildAuto("centerShootSimple");
+    }
+
+    
+    // ============================== AUTOS DE PRUEBA =================
+    public static Command lengthTest() {
+        return AutoBuilder.buildAuto("oneMeter");
+    }
+
+    public static Command timeTest() {
+        return AutoBuilder.buildAuto("timingPrueba");
+    }
+
+    
+
 
 
     

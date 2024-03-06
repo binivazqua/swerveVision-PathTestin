@@ -26,38 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "1-to-left"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "aimAtSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootWithDelay"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "left-to-2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2-to-left"
+            "pathName": "1-to-2"
           }
         },
         {
