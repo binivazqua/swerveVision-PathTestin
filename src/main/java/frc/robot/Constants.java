@@ -69,10 +69,10 @@ public final class Constants {
         
 
         // Distance between right and left wheels
-        public static final double kTrackWidth = Units.inchesToMeters(19.25);
+        public static final double kTrackWidth = Units.inchesToMeters(19.5);
         
         // Distance between front and back wheels
-        public static final double kWheelBase = Units.inchesToMeters(19.25);
+        public static final double kWheelBase = Units.inchesToMeters(19.5);
        
         public static final double DRIVE_BASE_RADIUS = Math.hypot(kTrackWidth / 2.0, kWheelBase / 2.0);
         

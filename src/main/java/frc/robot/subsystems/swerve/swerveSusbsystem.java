@@ -84,8 +84,8 @@ public class swerveSusbsystem extends SubsystemBase {
             this::setChassisSpeeds, 
 
             new HolonomicPathFollowerConfig(
-                new PIDConstants(20, 0, 0.01),
-                new PIDConstants(6, 0, 0), // kP changed from 8 to 6 (04/03)
+                new PIDConstants(16, 0, 0.01),
+                new PIDConstants(6.5, 0, 0), // kP changed from 8 to 6 (04/03)
                 3.5, 
                 DriveConstants.DRIVE_BASE_RADIUS, 
                 new ReplanningConfig()), 

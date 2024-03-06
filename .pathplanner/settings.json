@@ -1,10 +1,11 @@
 {
-  "robotWidth": 0.79,
-  "robotLength": 0.79,
+  "robotWidth": 0.81,
+  "robotLength": 0.81,
   "holonomicMode": true,
   "pathFolders": [
-    "left-autos",
+    "New Folder",
     "blue-armando",
+    "left-autos",
     "miercoles-de-plaza",
     "transitions",
     "translations"

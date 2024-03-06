@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.92,
-        "y": 6.94
+        "x": 1.5,
+        "y": 5.48
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.427340940091133,
-        "y": 6.534327279805212
+        "x": 2.500000000000001,
+        "y": 5.48
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.37,
-        "y": 5.531293435066112
+        "x": 2.5,
+        "y": 5.483308676541018
       },
       "prevControl": {
-        "x": 1.8430493800489387,
-        "y": 6.008464875767237
+        "x": 2.2542835925366513,
+        "y": 5.472864279061891
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.67865384042906,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "blue-armando",
+  "folder": null,
   "previewStartingState": {
-    "rotation": -146.32939978883692,
+    "rotation": -179.2291864120332,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.23,
-      "y": 5.5
+      "x": 1.3142878194153342,
+      "y": 5.566863856374023
     },
-    "rotation": 175.92627123055178
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -37,7 +37,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "lowPivotToGround"
+                  "name": "lowPivotToIntake"
                 }
               },
               {
@@ -49,16 +49,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo1"
+                  "pathName": "centerTo1SHOOT"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1ToCenter"
           }
         },
         {
@@ -68,7 +62,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
@@ -99,16 +93,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": null
+                  "pathName": "1To2SHOOT"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2ToCenter"
           }
         },
         {
@@ -118,7 +106,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
@@ -149,16 +137,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo3"
+                  "pathName": "2To3Shoot"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "3ToCenter"
           }
         },
         {
@@ -168,7 +150,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
