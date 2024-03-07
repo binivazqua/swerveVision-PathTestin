@@ -6,11 +6,20 @@
 package frc.robot.commands.hybrid;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class autos {
 
-    
+    public autos(){
+        SendableChooser<Command> chooser = AutoBuilder.buildAutoChooser();
+
+        chooser.addOption(null, null);
+
+        
+    }    
    // private static PathPlannerPath test = PathPlannerPath.fromPathFile("platanop1");
     
     /*public static Command autoForward(){
@@ -38,7 +47,7 @@ public class autos {
 
     // =============================== AUTOS FINALES ======================================== //
     public static Command fourNoteCenter() {
-        return AutoBuilder.buildAuto("123OnCenterShootOnWing");
+        return AutoBuilder.buildAuto("123OnCenterShootOnWingNoCurve");
     }
 
     public static Command fourNoteCenterReturning() {
@@ -65,8 +74,13 @@ public class autos {
 
     public static Command timeTest() {
         return AutoBuilder.buildAuto("timingPrueba");
-    }
+    }   
 
+  
+
+    public static Command OneAnd2OnLeft(){
+        return AutoBuilder.buildAuto("1and2OnLeft");
+    }
     
 
 

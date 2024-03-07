@@ -108,7 +108,7 @@ public class RobotContainer {
         );
         */
 
-        
+        photoncamera.setDefaultCommand(new PhotonLLCommand());
 
                 
               
@@ -275,7 +275,7 @@ public class RobotContainer {
         );
         // ********true
         
-
+        new JoystickButton(driverJoytick, PS4OIConstants.cross).whileTrue(new PivoteoCommand(0.25));
         //new JoystickButton(placerJoystick, PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5));
         
         // escupir
@@ -337,10 +337,9 @@ public class RobotContainer {
        
        //return subroutines.lowArmAndShoot();
        //return null;
-      //return subroutines.lowArmAndShoot();
       //return AutoBuilder.buildAuto("1and2OnCenter");
-      return autos.test_papaya();
-    
+      
+      return autos.fourNoteCenter();
     }
 
 

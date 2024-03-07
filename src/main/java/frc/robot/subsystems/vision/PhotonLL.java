@@ -56,16 +56,18 @@ public class PhotonLL extends SubsystemBase {
       xMeters = camToTarget.getX();
       yMeters = camToTarget.getY();
 
-      
-      
+    /* 
       SmartDashboard.putNumber("Yaw", yaw);
       SmartDashboard.putNumber("Pitch", pitch);
       SmartDashboard.putNumber("Area", area);
       SmartDashboard.putNumber("Apriltag Id", Id);
-      SmartDashboard.putNumber("X-METERS", xMeters);
+*/
       SmartDashboard.putNumber("Y-METERS", yMeters);
-      SmartDashboard.putNumber("distance x", getXDistance());
-      SmartDashboard.putNumber("distance y", getYDistance());
+            SmartDashboard.putNumber("X-METERS", xMeters);
+
+      SmartDashboard.putNumber("X ANGLE", camToTarget.getRotation().getX());
+      SmartDashboard.putNumber("Y ANGLE", -camToTarget.getRotation().getY());
+      SmartDashboard.putNumber("Z ANGLE", camToTarget.getRotation().getZ());
 
     } 
 
