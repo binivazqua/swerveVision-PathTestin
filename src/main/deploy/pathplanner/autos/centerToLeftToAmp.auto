@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.27,
-      "y": 5.57
+      "x": 1.23,
+      "y": 5.5
     },
-    "rotation": 180.0
+    "rotation": 179.18316621536835
   },
   "command": {
     "type": "sequential",
@@ -49,16 +49,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo2"
+                  "pathName": "subwoofer-center-shoot"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2ToCenter"
           }
         },
         {
@@ -68,7 +62,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
@@ -99,32 +93,20 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo1"
+                  "pathName": "2toAmp"
                 }
               }
             ]
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "1ToCenter"
-          }
-        },
-        {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "aimAtSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootWithDelay"
+                  "pathName": "3toAMP"
                 }
               }
             ]
@@ -133,6 +115,6 @@
       ]
     }
   },
-  "folder": "autos-finales",
+  "folder": null,
   "choreoAuto": false
 }

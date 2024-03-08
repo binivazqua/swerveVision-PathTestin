@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,9 +32,11 @@ public class Pivoteo extends SubsystemBase {
     private final AbsoluteEncoder absoluteEncoder;
 
     public double output;
+    
 
     // PID:
     ProfiledPIDController PID;
+    InterpolatingDoubleTreeMap goalMap;
 
   /** Creates a new ExampleSubsystem. */
   public Pivoteo() {
@@ -69,6 +72,13 @@ public class Pivoteo extends SubsystemBase {
       new TrapezoidProfile.Constraints(
         PivotingConstants.kMaxVelocity,
         PivotingConstants.kMaxAcceleration));
+
+    goalMap = new InterpolatingDoubleTreeMap();
+    goalMap.put(1.0, 0.20);
+    goalMap.put(1.5, 0.22);
+    goalMap.put(2.0, 0.26);
+
+
 
 
       
@@ -128,7 +138,24 @@ public class Pivoteo extends SubsystemBase {
     leftMotor.set(output);
 
   }
+/* 
+  public void setGoal(double goal, double key){
+    PID.setGoal(goalMap.get(key));
+    output = Functions.clamp(PID.calculate(encoder.getPosition()/20), -0.2, 0.2);
+    rightMotor.set(output);
+    leftMotor.set(output);
+    
+  }*/
 
+  public void setPositionByInterpolation(double key){
+    //setGoal(goalMap.get(key));
+    SmartDashboard.putNumber("Camera distance: ", key);
+    SmartDashboard.putNumber("Pivot By Interpolation Goal: ", goalMap.get(key));
+   
+
+
+  }
+  
   public void setAbsoluteEncoderZero(double zero){
     absoluteEncoder.setZeroOffset(zero);
   }

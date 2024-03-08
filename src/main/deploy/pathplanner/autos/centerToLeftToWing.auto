@@ -2,23 +2,48 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.27,
-      "y": 5.57
+      "x": 1.23,
+      "y": 5.5
     },
-    "rotation": 180.0
+    "rotation": 177.4017750813096
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo3"
+                }
+              }
+            ]
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
@@ -49,32 +74,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo2"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2ToCenter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "aimAtSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootWithDelay"
+                  "pathName": "left-to-center-left"
                 }
               }
             ]
@@ -99,16 +99,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "centerTo1"
+                  "pathName": "left-to-wing-shoot"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1ToCenter"
           }
         },
         {
@@ -118,7 +112,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
                 }
               },
               {
@@ -133,6 +127,6 @@
       ]
     }
   },
-  "folder": "autos-finales",
+  "folder": null,
   "choreoAuto": false
 }

@@ -27,6 +27,7 @@ import frc.robot.commands.Mecanismos.ArmVelocityCommand;
 import frc.robot.commands.Mecanismos.ClimbCommand;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PhotonLLCommand;
+import frc.robot.commands.Mecanismos.PivoteoByInterpolation;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
 import frc.robot.commands.Mecanismos.ShooterButtonCmd;
 import frc.robot.commands.Mecanismos.setPivotVelocity;
@@ -176,6 +177,9 @@ public class RobotContainer {
         // SHOOTEAR DE LEJOS
         //new JoystickButton(driverJoytick, Constants.PS4OIConstants.PSButton).whileTrue(subroutines.shootWithDelayLejos());
 
+        // SET POSITION BY INTERPOLATION:
+        new JoystickButton(driverJoytick, Constants.PS4OIConstants.circle).whileTrue(new PivoteoByInterpolation());
+
        // ================================================== PLACER JOYSTICKS  =============================================//
 
 
@@ -280,6 +284,11 @@ public class RobotContainer {
         
         // escupir
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.35));
+                
+        
+
+
+
 
        /*
        pruebas amp
