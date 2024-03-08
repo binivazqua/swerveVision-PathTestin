@@ -12,21 +12,47 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "lowArmAndShoot"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootWithDelay"
+                }
+              }
+            ]
           }
         },
         {
-          "type": "path",
+          "type": "race",
           "data": {
-            "pathName": "Left-to-1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1-to-2"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Left-to-1"
+                }
+              }
+            ]
           }
         },
         {
@@ -36,7 +62,51 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
+                  "name": "aimAtWing"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "1-to-2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimAtWing"
                 }
               },
               {
