@@ -102,7 +102,29 @@ public class PhotonLL extends SubsystemBase {
       return area;
     }
 
-
+    
+    public void filterAprilTags(){
+      var result = camera.getLatestResult();
+    
+      
+    
+      if (result.hasTargets()) {
+      //LIST of targets photon vision has
+      var targets = result.getTargets();
+  
+      //checks to see if there is a list of apriltags to check. if no targets are visable, end command
+        if (targets.isEmpty()) {
+          SmartDashboard.putBoolean("done", true);
+        }
+  
+       var foundTargets = targets.stream().filter(t -> t.getFiducialId() == 4 || t.getFiducialId() == 8)
+                        .filter(t -> !t.equals(4) && t.getPoseAmbiguity() <= .2 && t.getPoseAmbiguity() != -1)
+                        .findFirst();
+  
+        if (foundTargets.isPresent()) {
+       var cameraToTarget = foundTargets.get().getBestCameraToTarget();
+  }}
+    }
 
 
   @Override

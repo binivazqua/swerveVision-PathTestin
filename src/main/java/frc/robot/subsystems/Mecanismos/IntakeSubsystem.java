@@ -26,21 +26,12 @@ public class IntakeSubsystem extends SubsystemBase {
   private final CANSparkMax motorIntake;
   private final RelativeEncoder encoderIntake;
 
- // private final I2C.Port i2cPort;
-
- // private final ColorSensorV3 m_colorSensor;
-
-  private boolean detectedred;
-  private boolean detectedgreen;
-  private boolean detectedblue;
-
   private boolean inRange;
 
-  private Color detectedColor;
   private int proximity;
 
-  DigitalInput sensorIR_1;
-  DigitalInput sensorIR_2;
+  DigitalInput infrared;
+
 
 
   public IntakeSubsystem() {
@@ -50,20 +41,23 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake.setInverted(IntakeConstants.kMotorInverted);
     motorIntake.setIdleMode(IntakeConstants.kMotorIdleMode);
 
-    /*i2cPort = I2C.Port.kOnboard;
-
-    m_colorSensor = new ColorSensorV3(i2cPort);
-
-    detectedColor = m_colorSensor.getColor();
-    //proximity = m_colorSensor.getProximity();
-
+    
     /** Initialization for the relative encoder */
     encoderIntake = motorIntake.getEncoder();
     resetEncoder();
     
-    sensorIR_1 = new DigitalInput(IntakeConstants.kIRSensor1ID);
-    sensorIR_2 = new DigitalInput(IntakeConstants.kIRSensor2ID);
+    /** Infrared sensor initialization **/
+    infrared = new DigitalInput(1);
 
+  }
+
+  private static IntakeSubsystem instance;
+
+  public static IntakeSubsystem getInstance(){
+    if(instance == null){
+      instance = new IntakeSubsystem();
+    }
+    return instance;
   }
 
   /** Crea las funciones para las distintas cosas que puede hacer tu sistema **/
@@ -81,6 +75,28 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void stopMotor(){
     motorIntake.set(0);
+  }
+
+  public boolean getInfrared(){
+    if(!infrared.get() == true)
+      return true;
+    else
+      return false;
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+
+    //detectedColor = m_colorSensor.getColor();
+
+   
+    // INTAKE INFO
+
+    SmartDashboard.putNumber("NOTE INTAKE: ", getEncoder());
+    //SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
+    SmartDashboard.putBoolean("NOTE LOADED: ", !getInfrared());
+
   }
 /* 
   public int getProximity() {
@@ -132,61 +148,8 @@ public class IntakeSubsystem extends SubsystemBase {
 
   }*/
 
-  public boolean getSensorInfrarrojo(){
-    if(!sensorIR_1.get() == true || !sensorIR_2.get() == true)
-      return true;
-    else
-      return false;
-  }
+ 
   
-  
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-
-    //detectedColor = m_colorSensor.getColor();
-
-   
-    // INTAKE INFO
-
-    SmartDashboard.putNumber("Encoder Intake", getEncoder());
-    //SmartDashboard.putBoolean("Note loaded?", detectedNote());
-    //SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
-    //SmartDashboard.putNumber("PROXIMITY:", getProximity());
-    //SmartDashboard.putBoolean("IN RANGE:", noteInRange());
-    //SmartDashboard.putBoolean("COLOR DETECTED?", noteColorDetected());
-
-    /*// RAW COLOR:
-    SmartDashboard.putString("Raw Color: ", m_colorSensor.getRawColor().toString());
-    SmartDashboard.putNumber("Raw RED: ", m_colorSensor.getRawColor().red);
-    SmartDashboard.putNumber("Raw GREEN: ", m_colorSensor.getRawColor().green);
-    SmartDashboard.putNumber("Raw BLUE: ", m_colorSensor.getRawColor().blue);
-*/
-    // INTEGER COLOR:
-    /*SmartDashboard.putNumber("INTEGER RED", detectedColor.red);
-    SmartDashboard.putNumber("INTEGER GREEN", detectedColor.green);
-    SmartDashboard.putNumber("INTEGER BLUE", detectedColor.blue);
-*/
-
-
-    // INTEGER COLORS:
-   /*  SmartDashboard.putString("HEX STRING: ", detectedColor.toHexString());
-    SmartDashboard.putString("COLOR STRING: ", detectedColor.toString());
-*/
-    SmartDashboard.putBoolean("Sensor IR 1", !sensorIR_1.get());
-    SmartDashboard.putBoolean("Sensor IR 2", !sensorIR_2.get());
-
-  }
-
-  private static IntakeSubsystem instance;
-
-  public static IntakeSubsystem getInstance(){
-    if(instance == null){
-      instance = new IntakeSubsystem();
-    }
-    return instance;
-  }
 
 
 }

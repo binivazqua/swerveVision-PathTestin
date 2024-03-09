@@ -130,6 +130,7 @@ public class Pivoteo extends SubsystemBase {
     leftMotor.set(0);
   }
 
+  
   public void setGoal(double goal){
     PID.setGoal(goal + 0.018);
 
@@ -174,6 +175,7 @@ public class Pivoteo extends SubsystemBase {
     leftMotor.set(speed);
 
   }
+
 
   public boolean atGoal(){
     boolean atGoal;

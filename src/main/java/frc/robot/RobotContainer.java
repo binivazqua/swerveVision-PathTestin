@@ -256,37 +256,46 @@ public class RobotContainer {
 
 
         // shoot sin delay:
-        //new JoystickButton(placerJoystick, 5).whileTrue(new ShooterButtonCmd(-0.75)); // 
+        new JoystickButton(placerJoystick, 6).whileTrue(new ShooterButtonCmd(0.6)); // 
 
         // SHOOT
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.topRight).whileTrue(subroutines.shootWithDelay());
+        //new JoystickButton(placerJoystick, Constants.PS4OIConstants.topRight).whileTrue(subroutines.shootWithDelay());
 
         // recoger
         // --> BACKUP <--
 
-        // ********truemmmmmmmmmmm,mmmmmm
-        // --> BUENO <--
-        
+        /* ---> YA TIENE TOPE MECÁNICO <---
         new JoystickButton(placerJoystick, Constants.PS4OIConstants.cross).whileTrue(
             new ParallelCommandGroup(
                 new IntakeButtonCmd(-0.5),
                 new ArmVelocityCommand(0.075)
             )
         );
+        */
+
+        // ********true
+        // --> BUENO <--
 
         new JoystickButton(placerJoystick, PS4OIConstants.triangle).whileTrue(
             new IntakeButtonCmd(-0.5)
         );
+
+        // Detected note?
+        new JoystickButton(placerJoystick, PS4OIConstants.triangle).whileTrue(
+            new IntakeButtonCmd(-0.5, true)
+        );
         // ********true
         
-        new JoystickButton(driverJoytick, PS4OIConstants.cross).whileTrue(new PivoteoCommand(0.25));
+        //comentado sig linea 09/03/24 8Mam
+        //new JoystickButton(driverJoytick, PS4OIConstants.cross).whileTrue(new PivoteoCommand(0.25));
         //new JoystickButton(placerJoystick, PS4OIConstants.cross).whileTrue(new IntakeButtonCmd(-0.5));
         
         // escupir
-        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.35));
+        new JoystickButton(placerJoystick, Constants.PS4OIConstants.circle).whileTrue(new IntakeButtonCmd(0.5));
                 
         
-
+        // PRUEBA MOTOR:
+        
 
 
 
