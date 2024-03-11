@@ -24,7 +24,6 @@ public class Pivoteo extends SubsystemBase {
     
     public static Pivoteo instance;
 
-    PowerDistribution pdh = new PowerDistribution();
 
     RelativeEncoder encoder;
     // Encoders:
@@ -50,7 +49,7 @@ public class Pivoteo extends SubsystemBase {
     leftMotor.restoreFactoryDefaults();
     leftMotor.setSmartCurrentLimit(PivotingConstants.kMotorsCurrentLimit);
 
-    absoluteEncoder = leftMotor.getAbsoluteEncoder(Type.kDutyCycle);
+    absoluteEncoder = rightMotor.getAbsoluteEncoder(Type.kDutyCycle);
 
 //ENCODER RELATIVO DEL MOTOR
  
@@ -104,7 +103,7 @@ public class Pivoteo extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putBoolean("AT GOAL", atGoal());
     SmartDashboard.putNumber("PID GOAL", PID.getGoal().position);
-    SmartDashboard.putBoolean("LEEEEEDS", pdh.getSwitchableChannel());
+    //SmartDashboard.putBoolean("LEEEEEDS", pdh.getSwitchableChannel());
     atGoal();
 
     // K OFFSET = 0.0448
@@ -114,23 +113,21 @@ public class Pivoteo extends SubsystemBase {
 
     SmartDashboard.putNumber("APPLIED CURRENT PIVOT", leftMotor.getOutputCurrent());
 
-    SmartDashboard.putNumber("ENCODER RELATIVO PIVOTEO", encoder.getPosition()/20);
+    //SmartDashboard.putNumber("ENCODER RELATIVO PIVOTEO", encoder.getPosition()/20);
     //encenderLeds();
   }
 
   public void resetEncoder(){
     encoder.setPosition(0);
   }
-  public void encenderLeds(){
-    pdh.setSwitchableChannel(atGoal());
-  }
+ 
 
   public void stopMotors(){
     rightMotor.set(0);
     leftMotor.set(0);
   }
 
-  
+  /* 
   public void setGoal(double goal){
     PID.setGoal(goal + 0.018);
 
@@ -139,15 +136,26 @@ public class Pivoteo extends SubsystemBase {
     leftMotor.set(output);
 
   }
-/* 
+*/
+  public void setGoal (double goal){
+    
+      PID.setGoal(goal + 0.065);
+  
+      output = Functions.clamp(PID.calculate(absoluteEncoder.getPosition()), -0.2, 0.2);
+      rightMotor.set(output);
+      leftMotor.set(output);
+  
+    
+  }
+  /* 
   public void setGoal(double goal, double key){
     PID.setGoal(goalMap.get(key));
     output = Functions.clamp(PID.calculate(encoder.getPosition()/20), -0.2, 0.2);
     rightMotor.set(output);
     leftMotor.set(output);
     
-  }*/
-
+  }
+*/
   public void setPositionByInterpolation(double key){
     //setGoal(goalMap.get(key));
     SmartDashboard.putNumber("Camera distance: ", key);
@@ -167,7 +175,8 @@ public class Pivoteo extends SubsystemBase {
   }
 
   public double getPosition(){
-    return encoder.getPosition()/20;
+    //return encoder.getPosition()/20;
+    return absoluteEncoder.getPosition();
   }
 
   public void setVelocity(double speed){

@@ -18,13 +18,26 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootWithDelay"
+                  "name": "lowArm"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "lowArm"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "pushNote"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -68,7 +81,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootWithDelay"
+                  "name": "pushNote"
                 }
               }
             ]
@@ -112,7 +125,51 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootWithDelay"
+                  "name": "pushNote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "lowPivotToIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "centerTo3"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3ToCenter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "pushNote"
                 }
               }
             ]

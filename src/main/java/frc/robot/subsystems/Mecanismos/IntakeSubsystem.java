@@ -30,7 +30,12 @@ public class IntakeSubsystem extends SubsystemBase {
 
   private int proximity;
 
-  DigitalInput infrared;
+  DigitalInput infraredLeft;
+  DigitalInput infraredRight;
+
+  PowerDistribution pdh = new PowerDistribution();
+
+
 
 
 
@@ -47,7 +52,9 @@ public class IntakeSubsystem extends SubsystemBase {
     resetEncoder();
     
     /** Infrared sensor initialization **/
-    infrared = new DigitalInput(1);
+    infraredRight = new DigitalInput(4);
+    infraredLeft = new DigitalInput(3);
+
 
   }
 
@@ -78,11 +85,20 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public boolean getInfrared(){
-    if(!infrared.get() == true)
-      return true;
-    else
-      return false;
+
+    return infraredRight.get() ;
+   
   }
+
+  public void encenderLeds(){
+    pdh.setSwitchableChannel(getInfrared());
+  }
+
+  public void apagarLeds(){
+    pdh.setSwitchableChannel(!getInfrared());
+  }
+  
+
 
   @Override
   public void periodic() {
@@ -94,8 +110,16 @@ public class IntakeSubsystem extends SubsystemBase {
     // INTAKE INFO
 
     SmartDashboard.putNumber("NOTE INTAKE: ", getEncoder());
-    //SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
-    SmartDashboard.putBoolean("NOTE LOADED: ", !getInfrared());
+    SmartDashboard.putBoolean("LEDS ON?", pdh.getSwitchableChannel());
+    SmartDashboard.putBoolean("NOTE LOADED: ", getInfrared());
+    SmartDashboard.putBoolean("IR DETECTION: ", getInfrared());
+    SmartDashboard.putBoolean("RIGHT IR DETECTION: ", infraredRight.get());
+    SmartDashboard.putBoolean("LEFT IR DETECTION: ", infraredLeft.get());
+
+
+
+    //SmartDashboard.putBoolean("NOTE LOADED COMMAND: ", getInfrared());
+
 
   }
 /* 

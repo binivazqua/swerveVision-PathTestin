@@ -10,6 +10,8 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.commands.Mecanismos.ShooterButtonCmd;
 
 public class autos {
 
@@ -50,12 +52,34 @@ public class autos {
         return AutoBuilder.buildAuto("123OnCenterShootOnWingNoCurve");
     }
 
+    public static Command simpleShootCenter() {
+        return AutoBuilder.buildAuto("centerShootSimple");
+    }
+
     public static Command fourNoteCenterReturning() {
         return AutoBuilder.buildAuto("123OnCenter");
     }
 
     public static Command threeNoteCenter() {
         return AutoBuilder.buildAuto("1and2OnCenter");
+    }
+
+    public static Command threeNoteCenterV2(){
+        return AutoBuilder.buildAuto("1and2OnCenterHermosillo");
+    }
+
+    public static Command OneTwoCenterShooting(){
+        return new ParallelCommandGroup(
+            new ShooterButtonCmd(0.75),
+            AutoBuilder.buildAuto("12CenterShooting")
+        );
+    }
+
+    public static Command OneTwoThreeCenterShooting(){
+        return new ParallelCommandGroup(
+            new ShooterButtonCmd(0.75),
+            AutoBuilder.buildAuto("123CenterShooting")
+        );
     }
 
     public static Command leaveAndTakeOut() {
@@ -66,6 +90,12 @@ public class autos {
         return AutoBuilder.buildAuto("centerShootSimple");
     }
 
+    public static Command shootFromWing(){
+        return new ParallelCommandGroup(
+            new ShooterButtonCmd(0.75),
+            AutoBuilder.buildAuto("angleTest")
+        );
+    }
     
     // ============================== AUTOS DE PRUEBA =================
     public static Command lengthTest() {
@@ -75,6 +105,12 @@ public class autos {
     public static Command timeTest() {
         return AutoBuilder.buildAuto("timingPrueba");
     }   
+
+    public static Command salirTest() {
+        return AutoBuilder.buildAuto("pruebaCenterTo1");
+    }   
+
+    
 
   
 

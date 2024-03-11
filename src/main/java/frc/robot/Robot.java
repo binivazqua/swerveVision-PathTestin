@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Mecanismos.IntakeButtonCmd;
 import frc.robot.commands.Mecanismos.PivoteoCommand;
+import frc.robot.commands.Mecanismos.ShooterButtonCmd;
 import frc.robot.commands.Mecanismos.setPivotVelocity;
 import frc.robot.commands.hybrid.subroutines;
 import frc.robot.subsystems.Mecanismos.Pivoteo;
@@ -64,15 +65,21 @@ public class Robot extends TimedRobot {
         swerve = swerveSusbsystem.getInstance();
         swerve.resetEncoders();
 
+
         NamedCommands.registerCommand("ShootWithDelay", subroutines.shootWithDelay());
-        NamedCommands.registerCommand("lowArm", subroutines.lowArm());
+        NamedCommands.registerCommand("justShoot", subroutines.justShoot());
+        NamedCommands.registerCommand("loadShooter", new ShooterButtonCmd(0.75));
+        NamedCommands.registerCommand("lowArm", subroutines.lowArm().withTimeout(0.7));
         NamedCommands.registerCommand("lowArmAndShoot", subroutines.lowArmAndShoot());
         NamedCommands.registerCommand("intakeNote", new IntakeButtonCmd(-0.4, false));
+        NamedCommands.registerCommand("pushNote", new IntakeButtonCmd(-0.4).withTimeout(1.2));
         NamedCommands.registerCommand("takeOutNote", new IntakeButtonCmd(0.7).withTimeout(3));
         NamedCommands.registerCommand("aimAtSubwoofer", new PivoteoCommand(0.16).withTimeout(2));
         NamedCommands.registerCommand("aimAtWing", new PivoteoCommand(0.20).withTimeout(2));
         NamedCommands.registerCommand("lowPivotToGround", new setPivotVelocity(0).withTimeout(0.3));
         NamedCommands.registerCommand("lowPivotToIntake", new PivoteoCommand(0.03));
+        NamedCommands.registerCommand("pivotToShootFar", new PivoteoCommand(0.2));
+
 
 
         addPeriodic(() -> CommandScheduler.getInstance().run(), 0.01);
