@@ -11,8 +11,9 @@
     "translations"
   ],
   "autoFolders": [
-    "autos-prueba",
-    "autos-finales"
+    "New Folder",
+    "autos-finales",
+    "autos-prueba"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

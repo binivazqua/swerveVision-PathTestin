@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PhotonLL extends SubsystemBase {
   //PhotonCamera camera = new PhotonCamera("camara1");
-  PhotonCamera camera = new PhotonCamera("camara1");
+  //PhotonCamera camera = new PhotonCamera("camara1");
+  PhotonCamera camera = new PhotonCamera("camara2");
 
 
   private double yaw;
@@ -55,14 +56,19 @@ public class PhotonLL extends SubsystemBase {
       xMeters = camToTarget.getX();
       yMeters = camToTarget.getY();
 
-
-      
+    /* 
       SmartDashboard.putNumber("Yaw", yaw);
       SmartDashboard.putNumber("Pitch", pitch);
       SmartDashboard.putNumber("Area", area);
       SmartDashboard.putNumber("Apriltag Id", Id);
-      SmartDashboard.putNumber("X-METERS", xMeters);
+*/
       SmartDashboard.putNumber("Y-METERS", yMeters);
+            SmartDashboard.putNumber("X-METERS", xMeters);
+
+      SmartDashboard.putNumber("X ANGLE", camToTarget.getRotation().getX());
+      SmartDashboard.putNumber("Y ANGLE", -camToTarget.getRotation().getY());
+      SmartDashboard.putNumber("Z ANGLE", camToTarget.getRotation().getZ());
+
     } 
 
   }

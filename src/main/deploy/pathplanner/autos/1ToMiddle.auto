@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "centerTo3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3ToMiddle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MiddleToLine"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LineToMiddle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MiddleTo2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
