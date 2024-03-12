@@ -36,12 +36,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimAtSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "ShootWithDelay"
                 }
               }

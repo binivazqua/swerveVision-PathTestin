@@ -73,6 +73,8 @@ public class ShooterSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Encoder Shooter Derecho", getEncoderDer());
     SmartDashboard.putNumber("Encoder Shooter Izquierdo", getEncoderIzq());
     SmartDashboard.putNumber("Shooter", motorShooterDer.getOutputCurrent());
+    SmartDashboard.putNumber("SHOOTER RPM", encoderShooterDer.getVelocity());
+    SmartDashboard.putBoolean("SHOOTER AT SPEED", encoderShooterDer.getVelocity() > 1800 ? true : false);
   }
 
   private static ShooterSubsystem instance;

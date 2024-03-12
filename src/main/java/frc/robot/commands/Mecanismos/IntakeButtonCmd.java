@@ -5,7 +5,13 @@
 package frc.robot.commands.Mecanismos;
 
 import frc.robot.subsystems.Mecanismos.IntakeSubsystem;
+
+import org.ejml.equation.IntegerSequence.For;
+
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /** An example command that uses an example subsystem. */
 public class IntakeButtonCmd extends Command {
@@ -47,6 +53,9 @@ public class IntakeButtonCmd extends Command {
   @Override
   public void end(boolean interrupted) {
     intake_subsystem.setSpeed(0);
+   intake_subsystem.encenderLeds();
+    
+
     System.out.println("Intake Button Command Ended Succesfully!");    
     //intake_subsystem.encenderLeds();
   }
@@ -54,7 +63,7 @@ public class IntakeButtonCmd extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(intake_subsystem.getSensorInfrarrojo() == true && detectarNote == true)
+    if(intake_subsystem.getInfrared() == true && detectarNote == true)
       return true;
     else     
       return false;

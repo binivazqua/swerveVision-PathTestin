@@ -43,7 +43,7 @@ public class PivoteoCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(goal == 0.26)
+    if(goal == 0.3)
       return arm.atGoal();
     else 
       return false;

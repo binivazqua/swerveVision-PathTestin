@@ -12,19 +12,32 @@
     "data": {
       "commands": [
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootWithDelay"
+                  "name": "lowArm"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "lowArm"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.7
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "pushNote"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -56,63 +69,32 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "2ToCenter"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootWithDelay"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "lowPivotToIntake"
+                  "name": "pivotToShootFar"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "intakeNote"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "centerTo1SHOOT"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1ToCenter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootWithDelay"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.0
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "pushNote"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -121,6 +103,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "autos-finales",
   "choreoAuto": false
 }

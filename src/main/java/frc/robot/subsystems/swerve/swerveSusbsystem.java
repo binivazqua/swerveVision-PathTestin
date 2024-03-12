@@ -258,6 +258,8 @@ public class swerveSusbsystem extends SubsystemBase {
 
         //Visualization of the field
         SmartDashboard.putData("Field", field);
+        SmartDashboard.putString("Pose Meters Odometry: ", odometry.getPoseMeters().toString());
+
 
         //Debug info of the odometry
          
